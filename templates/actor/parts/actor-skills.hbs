@@ -1,0 +1,60 @@
+
+<div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{key}}">
+{{#if (includes attributes "exotique")}}
+    <i class="fas fa-dice-d20"></i>
+    <input type="text"
+        name="system.exotic.{{key}}_label"  
+        value="{{lookup @root.system.exotic (concat key '_label')}}"/>
+{{else}}
+    <label for="system.skills.{{key}}" title="{{lookup @root.desc.Skills key}}">
+        {{key}}
+        {{#if (includes attributes "innée")}}*{{/if}}
+    </label>
+{{/if}}
+</div>
+
+{{#if (includes attributes "spe")}}
+
+    <div class="grid-span-4 flex-group-left rollable" data-roll="s:{{key}}">
+        (<i class="fas fa-dice-d20"></i>
+        <input type="text"
+            name="system.spe.{{key}}_label_spe"  
+            value="{{lookup @root.system.spe (concat key '_label_spe')}}"/>)
+    </div>
+    
+    <input class="grid-span-1" type="text" 
+        name="system.skills.{{key}}"
+        value="{{lookup @root.system.skills key}}"
+    />
+
+    <div class="grid-span-2 flex-group-left">
+        (<input  type="text" 
+            name="system.spe.{{key}}_spe"  
+            value="{{lookup @root.system.spe (concat key '_spe')}}"
+        />)
+    </div>
+
+{{else}}
+    {{#if (includes attributes "liste")}}
+        <input class="grid-span-7" type="text" 
+            name="system.skills.{{key}}"
+            value="{{lookup @root.system.skills key}}"
+        />
+    {{else}}
+        <p class="grid-span-4"></p>
+        <input class="grid-span-3" type="text" 
+            name="system.skills.{{key}}"
+            value="{{lookup @root.system.skills key}}"
+        />
+    {{/if}}
+{{/if}}
+
+<div class="grid-span-1">
+    {{#if (includes attributes "exotique")}}
+        <input type="text"
+            name="system.exotic.{{key}}_carac"  
+            value="{{lookup @root.system.exotic (concat key '_carac')}}"/>
+    {{else}}
+        <label for="system.skills.{{key}}">{{findPrefixedValue attributes "c"}}</label>
+    {{/if}}
+</div>

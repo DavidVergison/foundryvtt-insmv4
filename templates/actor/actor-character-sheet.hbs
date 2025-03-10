@@ -1,0 +1,57 @@
+{{log "coucou"}}
+{{log "this" this}}
+{{log "this.config" this.config}}
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    {{> "systems/ins-mv/templates/actor/parts/actor-identity.hbs"}}
+  </header>
+  <section class="sheet-body">
+    {{> "systems/ins-mv/templates/actor/parts/actor-attributes.hbs"}}
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="mainTabs">
+      {{!-- Default tab is specified in actor-sheet.mjs --}}
+      <a class="item" data-tab="skills">Talents</a>
+      <a class="item" data-tab="description">Description</a>
+      <a class="item" data-tab="items">Items</a>
+      <a class="item" data-tab="powers">Powers</a>
+    </nav>
+
+    <div class="tab" data-tab="skills" data-group="mainTabs">
+      <section class="grid grid-12col">
+          <div class="items-header grid-span-12"><p>Talents principaux</p></div>
+          {{#each this.config.talents.main as |attributes key|}}
+            {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key}}
+          {{/each}}
+          
+          <div class="items-header grid-span-12"><p>Talents secondaires</p></div>
+          {{#each this.config.talents.secondary as |attributes key|}}
+            {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key}}
+          {{/each}}
+
+          <div class="items-header grid-span-12"><p>Talents exotiques</p></div>
+          {{#each this.config.talents.exotic as |attributes key|}}
+            {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key}}
+          {{/each}}
+      </section>
+    </div>
+    
+    <div class="tab" data-tab="description" data-group="mainTabs">
+      description
+    </div>
+    
+    <div class="tab" data-tab="items" data-group="mainTabs">
+      {{> "systems/ins-mv/templates/actor/parts/actor-items.hbs"}}
+    </div>
+    
+    <div class="tab" data-tab="powers" data-group="mainTabs">
+      {{> "systems/ins-mv/templates/actor/parts/actor-spells.hbs"}}
+    </div>
+  </section>
+  
+
+
+
+</form>

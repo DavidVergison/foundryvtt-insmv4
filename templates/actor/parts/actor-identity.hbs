@@ -1,0 +1,16 @@
+<section class="grid grid-4col">
+    <div class="header-fields grid-span-1">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    </div>
+    <div class="header-fields grid-span-3">
+        <h1 class="charname">
+            <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+        </h1>
+        <div class="resource-content flexrow flex-center flex-between">
+            <label for="system.boss" class="resource-label">{{localize (concat 'INS_MV.boss')}}</label>
+            <input name="system.boss" type="text" value="{{system.boss}}" placeholder="Boss"/>
+            <label for="system.rank" class="resource-label align-right">{{localize (concat 'INS_MV.rank')}}</label>
+            <input name="system.rank" type="text" value="{{system.rank}}" placeholder="0" data-dtype="Number"/>
+        </div>
+    </div>
+</section>

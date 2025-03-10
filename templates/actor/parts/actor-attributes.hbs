@@ -1,0 +1,17 @@
+{{log "this" this}}
+<section class="grid grid-6col">
+    {{#each this.config.sheetDictionary.Caracteristiques as |carac key|}}
+        <label for="system.caracteristics.{{key}}" 
+            class="resource-label rollable flexlarge align-right" 
+            title="xx"
+            data-roll="c:{{key}}" 
+            data-label="{{carac.long}}">
+            {{carac.long}}
+        </label>
+        <div class=" flex-group-left">
+            <i class="fas fa-dice-d20" data-roll="c:{{key}}" data-label="{{carac.long}}"></i>
+            <input type="text" name="system.caracteristics.{{key}}" 
+                    value="{{lookup @root.system.caracteristics key}}"/>
+        </div>
+    {{/each}}
+</section>

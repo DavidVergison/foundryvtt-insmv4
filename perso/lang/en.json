@@ -1,0 +1,67 @@
+{
+  "INS_MV": {
+    "rank":"Grade",
+    "boss":"Patron",
+    "absolute":"absolu",
+    "relative":"relatif",
+    "Caracteristics": {
+      "str": {"short":"For", "long": "Force"},
+      "agi": {"short":"Agi","long": "Agilité"},
+      "per": {"short":"Per","long": "Perception"},
+      "wil": {"short":"Vol","long": "Volonté"},
+      "pre": {"short":"Pre","long": "Presence"},
+      "fai": {"short":"Foi","long": "Foi"}
+    },
+    "MainSkills": {
+      "SmoothTalk": "Baratin",
+      "Combat": "Combat",
+      "Melee": "Corps à corps",
+      "Defense": "Défense",
+      "Stealth": "Discrétion",
+      "Discussion": "Discussion",
+      "Investigation": "Enquête",
+      "Search": "Fouille",
+      "Infiltration": "Intrusion",
+      "Medicine": "Médecine",
+      "Seduction": "Séduction",
+      "Shooting": "Tir"
+    },
+    "Ability": {
+      "Str": { "long": "Strength", "abbr": "str" },
+      "Con": { "long": "Constitution", "abbr": "con" },
+      "Dex": { "long": "Dexterity", "abbr": "dex" },
+      "Int": { "long": "Intelligence", "abbr": "int" },
+      "Wis": { "long": "Wisdom", "abbr": "wis" },
+      "Cha": { "long": "Charisma", "abbr": "cha" }
+    },
+    "SheetLabels": {
+      "Actor": "InsMv Actor Sheet",
+      "Item": "InsMv Item Sheet"
+    },
+    "Item": {
+      "Spell": {
+        "SpellLVL": "Level {level} Spells",
+        "AddLVL": "Add LVL {level}"
+      }
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Toggle Effect",
+      "Temporary": "Temporary Effects",
+      "Passive": "Passive Effects",
+      "Inactive": "Inactive Effects"
+    }
+  },
+
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "NPC"
+    },
+    "Item": {
+      "item": "Item",
+      "feature": "Feature",
+      "spell": "Spell"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<p title="seuil: {{threshold}}"><strong>Résultat du jet :</strong> {{rollResult}}</p>
+{{#if success}}
+  <span style="color: green;" title="{{concatTitle successMarginParts}}">
+    Succès ! Avec une marge de {{successMargin}}
+  </span>
+{{else}}
+  <span style="color: red;" title="{{concatTitle failMarginparts}}">
+    Échec ! Avec une marge de {{failMargin}}
+  </span>
+{{/if}}

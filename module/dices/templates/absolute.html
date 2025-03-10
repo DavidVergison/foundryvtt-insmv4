@@ -1,0 +1,35 @@
+<form>
+  <div class="form-group">
+    <label>Score du joueur :</label>
+    <span id="score">{{#formatScore actorScore}}{{/formatScore}}</span>
+  </div>
+  <div class="form-group">
+    <label for="modifier">Modificateur :</label>
+    <input type="number" id="modifier" name="modifier" value="{{modifier}}" min="0" />
+  </div>
+  <div class="form-group">
+    <label for="risk">Prise de risque du joueur:</label>
+    <input type="number" id="actorRisk" name="actorRisk" value="{{actorRisk}}" min="0" max="{{score}}" />
+  </div>
+
+    <div class="form-group">
+      <label for="difficulty">Difficulté :</label>
+      <select id="difficulty" name="difficulty">
+        {{#each difficulties}}
+          <option value="{{@index}}" data-bonus="{{bonus}}">
+            {{label}} ({{#ifPositive bonus}}+{{/ifPositive}}{{bonus}})
+          </option>
+        {{/each}}
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <p id="chance">Chance de réussite : {{chance}}% ({{#formatScore computedScore}}{{/formatScore}})</p>
+    </div>
+  
+    <div class="form-group">
+      <button type="button" id="validate-roll">Lancer le jet</button>
+    </div>
+
+</form>
+  
