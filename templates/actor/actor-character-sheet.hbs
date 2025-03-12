@@ -1,8 +1,5 @@
-{{log "coucou"}}
-{{log "this" this}}
-{{log "this.config" this.config}}
+{{log "character-sheet" this}}
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
-
   {{!-- Sheet Header --}}
   <header class="sheet-header">
     {{> "systems/ins-mv/templates/actor/parts/actor-identity.hbs"}}
@@ -14,7 +11,7 @@
     <nav class="sheet-tabs tabs" data-group="mainTabs">
       {{!-- Default tab is specified in actor-sheet.mjs --}}
       <a class="item" data-tab="skills">Talents</a>
-      <a class="item" data-tab="description">Description</a>
+      <a class="item" data-tab="wounds">Blessures</a>
       <a class="item" data-tab="items">Items</a>
       <a class="item" data-tab="powers">Powers</a>
     </nav>
@@ -38,8 +35,8 @@
       </section>
     </div>
     
-    <div class="tab" data-tab="description" data-group="mainTabs">
-      description
+    <div class="tab" data-tab="wounds" data-group="mainTabs">
+      {{> "systems/ins-mv/templates/actor/parts/actor-wounds.hbs"}}
     </div>
     
     <div class="tab" data-tab="items" data-group="mainTabs">

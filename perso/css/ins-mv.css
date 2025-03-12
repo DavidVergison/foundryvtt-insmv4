@@ -374,3 +374,40 @@
 .ins-mv .effects .item .effect-controls {
   border: none;
 }
+.ins-mv .injury-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: max-content; /* Ajuste automatiquement la largeur */
+}
+.ins-mv .injury-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.ins-mv .injury-label {
+  min-width: 150px; /* Fixe la largeur pour aligner les `:` */
+  text-align: right;
+  font-weight: bold;
+}
+.ins-mv .injury-buttons {
+  display: flex;
+  gap: 5px;
+}
+.ins-mv .injury-buttons button {
+  width: 22px;
+  height: 22px;
+  font-size: 16px; /* Taille du "O" bien ajustée */
+  font-weight: bold; /* Éventuellement plus visible */
+  text-align: center;
+  line-height: 20px; /* Centre le texte verticalement */
+  padding: 0; /* Supprime les marges internes */
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Centre verticalement */
+  justify-content: center; /* Centre horizontalement */
+  border-radius: 4px; /* Ajoute un léger arrondi */
+}

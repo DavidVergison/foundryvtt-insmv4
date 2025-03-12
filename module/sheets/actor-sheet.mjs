@@ -12,6 +12,7 @@ export class InsMvActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['ins-mv', 'sheet', 'actor'],
+      edition: false,
       width: 600,
       height: 600,
       tabs: [
@@ -31,6 +32,11 @@ export class InsMvActorSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
+
+  constructor(object = {}, options = {}) {
+    super(object, options);
+    this.edition = false
+  }
 
   /** @override */
   async getData() {
@@ -85,6 +91,7 @@ export class InsMvActorSheet extends ActorSheet {
       this.actor.allApplicableEffects()
     );
 
+    
     return context;
   }
 
@@ -161,6 +168,30 @@ export class InsMvActorSheet extends ActorSheet {
       const li = $(ev.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId'));
       item.sheet.render(true);
+    });
+
+    html.on('click', '.wound', (ev) => {
+      ev.preventDefault();
+  
+      console.log("doc",this.document)
+      const type = ev.currentTarget.dataset.type; 
+      const key = ev.currentTarget.dataset.key; 
+  
+      if (this.document.system.wounds[type]) {
+        this.document.system.wounds[type][key] = (this.document.system.wounds[type][key] + 1) % 3;
+        this.actor.update({
+          [`system.wounds.${type}.${key}`]: this.document.system.wounds[type][key] // Utilisation correcte des crochets
+        });
+      }
+
+    
+      this.render();
+  });
+
+    html.find(".toggle-edit").click(ev => {
+      console.log("toggle", this.options.edition)
+      this.options.edition = !this.options.edition;
+      this.render(); // Rafraîchir la feuille
     });
 
     // -------------------------------------------------------------

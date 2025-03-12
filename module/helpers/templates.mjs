@@ -9,6 +9,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/ins-mv/templates/actor/parts/actor-features.hbs',
     'systems/ins-mv/templates/actor/parts/actor-items.hbs',
     'systems/ins-mv/templates/actor/parts/actor-spells.hbs',
+    'systems/ins-mv/templates/actor/parts/actor-wounds.hbs',
     'systems/ins-mv/templates/actor/parts/actor-effects.hbs',
     'systems/ins-mv/templates/actor/parts/actor-identity.hbs',
     'systems/ins-mv/templates/actor/parts/actor-attributes.hbs',

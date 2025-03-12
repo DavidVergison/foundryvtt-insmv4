@@ -149,6 +149,25 @@ Handlebars.registerHelper("concatTitle", function(array) {
       .map(item => `${item.value} (${item.name})`) // Formate chaque élément
       .join(" + "); // Assemble les éléments avec " + "
 });
+Handlebars.registerHelper("editOrView", function(editable, name, value, options) {
+  const attrs = Object.keys(options.hash)
+      .map(key => `${key}="${options.hash[key]}"`)
+      .join(" ");
+
+  if (editable) {
+      return new Handlebars.SafeString(
+          `<input type="text" name="${name}" value="${value}" ${attrs}>`
+      );
+  } else {
+      return new Handlebars.SafeString(
+          `<label ${attrs}>${value}</label>`
+      );
+  }
+});
+Handlebars.registerHelper("woundSymbol", function(value) {
+  const symbols = ["🔘", "⊘", "⊗"];
+  return new Handlebars.SafeString(symbols[value] || "?");
+});
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */

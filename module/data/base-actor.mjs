@@ -22,6 +22,34 @@ export default class InsMvActorBase extends InsMvDataModel {
     schema.boss = new fields.StringField({ blank: true });
     schema.rank = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max:3 });
     
+    const wound = { ...requiredInteger, initial: 0, min: 0, max:2 }
+    schema.wounds = new fields.SchemaField({
+      lightWounds: new fields.SchemaField({
+        l1: new fields.NumberField({ ...wound }),
+        l2: new fields.NumberField({ ...wound }),
+        l3: new fields.NumberField({ ...wound }),
+        l4: new fields.NumberField({ ...wound }),
+        l5: new fields.NumberField({ ...wound }),
+        l6: new fields.NumberField({ ...wound }),
+      }),
+      seriousWounds: new fields.SchemaField({
+        s1: new fields.NumberField({ ...wound }),
+        s2: new fields.NumberField({ ...wound }),
+        s3: new fields.NumberField({ ...wound }),
+        s4: new fields.NumberField({ ...wound }),
+        s5: new fields.NumberField({ ...wound }),
+      }),
+      fatalWounds: new fields.SchemaField({
+        f1: new fields.NumberField({ ...wound }),
+        f2: new fields.NumberField({ ...wound }),
+        f3: new fields.NumberField({ ...wound }),
+      }),
+      death: new fields.SchemaField({
+        d1: new fields.NumberField({ ...wound }),
+        d2: new fields.NumberField({ ...wound }),
+      })
+    })
+
     const requiredCaracteristic = { required: true, nullable: false };
 
     schema.caracteristics = new fields.SchemaField({})
