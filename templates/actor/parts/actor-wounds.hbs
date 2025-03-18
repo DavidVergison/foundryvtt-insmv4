@@ -2,10 +2,15 @@
     {{#each this.system.wounds as |woundCategory category|}}
         <div class="injury-row">
             <span class="injury-label">
-                {{#if (eq category "lightWounds")}} Blessures légères : {{/if}}
-                {{#if (eq category "seriousWounds")}} Blessures graves : {{/if}}
-                {{#if (eq category "fatalWounds")}} Blessures fatales : {{/if}}
-                {{#if (eq category "death")}} Blessures mortelles : {{/if}}
+                {{#if (eq category "lightWounds")}} Blessures légères {{/if}}
+                {{#if (eq category "seriousWounds")}} Blessures graves {{/if}}
+                {{#if (eq category "fatalWounds")}} Blessures fatales {{/if}}
+                {{#if (eq category "death")}} Blessures mortelles {{/if}}
+                ({{editOrView 
+                    (lookup @root.options "edition") 
+                    (concat "system." category "Threshold")
+                    (lookup @root.system (concat category "Threshold")) 
+                    class="x"}}): 
             </span>
             <div class="injury-buttons">          
                 {{#each woundCategory as |value key|}}

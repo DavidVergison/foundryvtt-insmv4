@@ -3,8 +3,8 @@
   "version": "2.0.0",
   "description": "CSS compiler for the InsMv system",
   "scripts": {
-    "build": "sass perso/src/scss/ins-mv.scss perso/css/ins-mv.css --style=expanded --no-source-map",
-    "watch": "sass perso/src/scss/ins-mv.scss perso/css/ins-mv.css --style=expanded --source-map --watch"
+    "build": "sass static/src/scss/ins-mv.scss static/css/ins-mv.css --style=expanded --no-source-map",
+    "watch": "sass static/src/scss/ins-mv.scss static/css/ins-mv.css --style=expanded --source-map --watch"
   },
   "browserslist": [
     "last 3 versions"

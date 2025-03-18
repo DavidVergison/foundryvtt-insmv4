@@ -12,11 +12,13 @@ import { INS_MV_DESC } from './helpers/descriptions.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 
-import { InsMv4_AbsoluteTest } from './dices/absolute-test.mjs';
-import { InsMv4_RelativeTest } from './dices/relative-test.mjs';
+import { InsMv4_AbsoluteTest } from './dices/absolute-test-app.mjs';
+import { InsMv4_RelativeTest } from './dices/relative-test-app.mjs';
 import { InsMvDie } from './dices/ins-mv-system-die.mjs';
 import { InsMvRollParser } from './dices/ins-mv-system-parser.mjs';
 import { InsMvRoll } from './dices/ins-mv-system-roll.mjs';
+import { AbsoluteTestRoll } from './dices/absolute-test-roll.mjs';
+import { RelativeTestRoll } from './dices/relative-test-roll.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -31,6 +33,8 @@ Hooks.once('init', function () {
     rollItemMacro,  
     InsMv4_AbsoluteTest,
     InsMv4_RelativeTest,
+    AbsoluteTestRoll,
+    RelativeTestRoll,
   };
 
   // Add custom constants for configuration.
@@ -40,7 +44,7 @@ Hooks.once('init', function () {
 
   // Make the parser recognise and construct a MySystemDie
   CONFIG.Dice.parser = InsMvRollParser;
-  CONFIG.Dice.rolls = [InsMvRoll];
+  CONFIG.Dice.rolls = [InsMvRoll, AbsoluteTestRoll, RelativeTestRoll];
 
   if (!('l' in CONFIG.Dice.terms)) {
     CONFIG.Dice.terms.l = InsMvDie;

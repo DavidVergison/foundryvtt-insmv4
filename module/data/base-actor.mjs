@@ -21,7 +21,14 @@ export default class InsMvActorBase extends InsMvDataModel {
 
     schema.boss = new fields.StringField({ blank: true });
     schema.rank = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max:3 });
-    
+    schema.rankPowers = new fields.StringField({ blank: true });
+    schema.titles = new fields.StringField({ blank: true });
+
+    schema.lightWoundsThreshold = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.seriousWoundsThreshold = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.fatalWoundsThreshold = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.deathThreshold = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+
     const wound = { ...requiredInteger, initial: 0, min: 0, max:2 }
     schema.wounds = new fields.SchemaField({
       lightWounds: new fields.SchemaField({
@@ -57,25 +64,7 @@ export default class InsMvActorBase extends InsMvDataModel {
       schema.caracteristics.fields[carac] = new fields.StringField({ ...requiredCaracteristic })
     }
 
-    const skills = { required: true, nullable: false};
 
-    schema.skills = new fields.SchemaField({})
-    schema.spe = new fields.SchemaField({})
-    schema.exotic = new fields.SchemaField({})
-
-    for (const talent in INS_MV.sheetDictionary.Talents) {
-      const attributes = INS_MV.sheetDictionary.Talents[talent];
-      
-      schema.skills.fields[talent] = new fields.StringField({ ...skills })
-      if (attributes.includes("spe")) {
-        schema.spe.fields[talent+"_spe"] = new fields.StringField({ ...skills })
-        schema.spe.fields[talent+"_label_spe"] = new fields.StringField({ ...skills })
-      }
-      if (attributes.includes("exotique")) {
-        schema.exotic.fields[talent+"_label"] = new fields.StringField({ ...skills })
-        schema.exotic.fields[talent+"_carac"] = new fields.StringField({ ...skills })
-      }
-    }
     
     return schema;
   }

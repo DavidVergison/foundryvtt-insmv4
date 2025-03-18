@@ -91,7 +91,6 @@ export class InsMvActorSheet extends ActorSheet {
       this.actor.allApplicableEffects()
     );
 
-    
     return context;
   }
 
@@ -266,7 +265,7 @@ export class InsMvActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onRoll(event) {
+  async _onRoll(event) {
     console.log("event", event)
     event.preventDefault();
 
@@ -316,11 +315,12 @@ export class InsMvActorSheet extends ActorSheet {
 
       if(event.type == "contextmenu") {
         new game.insmv.InsMv4_RelativeTest(
-          {score, faith}
+          {score, faith, name: this.actor.name, testedAttribute: att}
         ).render(true);
       } else {
+        console.log("name", this.actor.name)
         new game.insmv.InsMv4_AbsoluteTest(
-          {score, faith, marginBonus, marginBonusName}
+          {score, faith, marginBonus, marginBonusName, name: this.actor.name, testedAttribute: att}
         ).render(true);
       }
     }

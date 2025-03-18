@@ -95,6 +95,22 @@ INS_MV.sheetDictionary = {
   },
 }
 
+INS_MV.NPCsheetDictionary = {
+  "Talents": {
+    "libre01": ["exotique"],
+    "libre02": ["exotique"],
+    "libre03": ["exotique"],
+    "libre04": ["exotique"],
+    "libre05": ["exotique"],
+    "libre06": ["exotique", "spe"],
+    "libre07": ["exotique", "spe"],
+    "libre08": ["exotique", "spe"],
+    "libre09": ["exotique", "spe"],
+    "libre10": ["exotique", "spe"],
+  }
+}
+
+
 INS_MV.DIFFICULTIES =  [
   { label: "Facile", bonus: 4 },
   { label: "Difficile", bonus: 0 },
@@ -130,6 +146,7 @@ INS_MV.talents = {
   main: getTalentsByType("principale"),
   secondary : getTalentsByType("secondaire"),
   exotic : getTalentsByType("exotique"),
+  npc : getNPCTalents(),
 }
 
 
@@ -141,5 +158,11 @@ function getTalentsByType(type) {
   return Object.fromEntries(
     Object.entries(INS_MV.sheetDictionary.Talents)
       .filter(([_, details]) => details.includes(type))
+  );
+};
+
+function getNPCTalents() {
+  return Object.fromEntries(
+    Object.entries(INS_MV.NPCsheetDictionary.Talents)
   );
 };
