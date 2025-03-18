@@ -131,7 +131,7 @@ export class InsMv4_RelativeTest extends FormApplication {
         rollmode: "blind" // pour le test
       }, //option
     )
-    await rollTest.toMessage ({},{rollmode: "blind"})
+    await rollTest.toMessage ({},{rollMode: "blind"})
   }
 }
 
