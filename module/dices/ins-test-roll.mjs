@@ -6,24 +6,10 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
         this._evaluated = true;
         
         const roll = await this._rollDice(); // d666
-        const { actorName, testedAttribute } = this.data;
 
-        const specialResults = {
-          "111": "systems/ins-mv/static/assets/111.webp",
-          "666": "systems/ins-mv/static/assets/666.webp"
-        };
-        
-        if (specialResults[roll.results]) {
-          this.renderData = {
-            actorName,
-            testedAttribute,
-            picture: specialResults[roll.results],
-            template: "systems/ins-mv/module/dices/templates/roll-result-spe.hbs"
-          };
-        } else {
-          this.renderData = this._prepareRenderData(roll, this.data);
-          this.renderData.template = "systems/ins-mv/module/dices/templates/roll-result.hbs";
-        }
+        this.renderData = this._prepareRenderData(roll, this.data);
+        console.log("computed render data", {roll, data: this.data})
+        this.renderData.template = "systems/ins-mv/module/dices/templates/roll-result.hbs";
       }
       
 
@@ -39,42 +25,30 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
     }
 
     async render(options = {}) {
+      console.log("render this.renderData", this.renderData)
+
+      if (options.isPrivate){
+        return ""
+      }
+      
+      const specialResults = {
+        "111": "systems/ins-mv/static/assets/111.webp",
+        "666": "systems/ins-mv/static/assets/666.webp"
+      };
+
+      const spe = specialResults[this.renderData.rollResult]
+      console.log("render spe", spe)
+      if (spe) {
+        this.renderData.picture = spe
+        this.renderData.template = "systems/ins-mv/module/dices/templates/roll-result-spe.hbs"
+      }
+
       const content = await renderTemplate(
         this.renderData.template,
         this.renderData);
       return content
     }
-/*
-    async toMessage(messageData={}, {rollMode, create=true}={}) {
-      if ( rollMode === "roll" ) rollMode = undefined;
-      rollMode ||= game.settings.get("core", "rollMode");
-  
-      // Perform the roll, if it has not yet been rolled
-      if ( !this._evaluated ) await this.evaluate({allowInteractive: rollMode !== CONST.DICE_ROLL_MODES.BLIND});
-  
-      // Prepare chat data
-      messageData = foundry.utils.mergeObject({
-        user: game.user.id,
-        content: String(this.total),
-        sound: CONFIG.sounds.dice,
-        blind: true
-      }, messageData);
-      messageData.rolls = [this];
-  
-      console.log("messageData",messageData)
 
-      // Either create the message or just return the chat data
-      const cls = getDocumentClass("ChatMessage");
-      const msg = new cls(messageData);
-  
-      // Either create or return the data
-      if ( create ) return cls.create(msg.toObject(), { rollMode });
-      else {
-        msg.applyRollMode(rollMode);
-        return msg.toObject();
-      }
-    }
-*/
     async _rollDice(){
         let d666Die = new InsMvDie({
             "number": 1,

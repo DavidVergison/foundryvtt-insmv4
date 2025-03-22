@@ -16,7 +16,7 @@
       <label for="difficulty">Difficulté :</label>
       <select id="difficulty" name="difficulty">
         {{#each difficulties}}
-          <option value="{{@index}}" data-bonus="{{bonus}}">
+          <option value="{{@index}}" data-bonus="{{bonus}}" {{#if (eq bonus 0)}} selected {{/if}}>
             {{label}} ({{#ifPositive bonus}}+{{/ifPositive}}{{bonus}})
           </option>
         {{/each}}
@@ -24,16 +24,7 @@
     </div>
   
     <div class="form-group">
-      <input type="checkbox" id="blind" name="blind" checked />
-      <label for="blind">Jet secret</label>
-    </div>
-  
-    <div class="form-group">
       <p id="chance">Chance de réussite : {{chance}}% ({{#formatScore computedScore}}{{/formatScore}})</p>
-    </div>
-  
-    <div class="form-group">
-      <button type="button" id="validate-roll">Lancer le jet</button>
     </div>
 
 </form>

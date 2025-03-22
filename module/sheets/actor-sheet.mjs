@@ -266,7 +266,7 @@ export class InsMvActorSheet extends ActorSheet {
    * @private
    */
   async _onRoll(event) {
-    console.log("event", event)
+    console.log("event", {event, o: this.object})
     event.preventDefault();
 
     let faith = this.object.system.caracteristics["Foi"]
@@ -314,15 +314,26 @@ export class InsMvActorSheet extends ActorSheet {
       } 
 
       if(event.type == "contextmenu") {
-        new game.insmv.InsMv4_RelativeTest(
-          {score, faith, name: this.actor.name, testedAttribute: att}
-        ).render(true);
+        const relRoll = new game.insmv.RelativeTestRoll()
+        relRoll.prompt({      
+          faith,
+          name: this.actor.name,
+          testedAttribute: att,
+          score,
+        })
+  
       } else {
-        console.log("name", this.actor.name)
-        new game.insmv.InsMv4_AbsoluteTest(
-          {score, faith, marginBonus, marginBonusName, name: this.actor.name, testedAttribute: att}
-        ).render(true);
+        const absRoll = new game.insmv.AbsoluteTestRoll()
+        absRoll.prompt({      
+          faith,
+          name: this.actor.name,
+          testedAttribute: att,
+          score,
+          marginBonus, // item bonus
+          marginBonusName, //item name
+        })
       }
+
     }
   }
 }

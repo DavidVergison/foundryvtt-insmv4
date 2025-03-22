@@ -12,8 +12,6 @@ import { INS_MV_DESC } from './helpers/descriptions.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 
-import { InsMv4_AbsoluteTest } from './dices/absolute-test-app.mjs';
-import { InsMv4_RelativeTest } from './dices/relative-test-app.mjs';
 import { InsMvDie } from './dices/ins-mv-system-die.mjs';
 import { InsMvRollParser } from './dices/ins-mv-system-parser.mjs';
 import { InsMvRoll } from './dices/ins-mv-system-roll.mjs';
@@ -30,9 +28,7 @@ Hooks.once('init', function () {
   game.insmv = {
     InsMvActor,
     InsMvItem,
-    rollItemMacro,  
-    InsMv4_AbsoluteTest,
-    InsMv4_RelativeTest,
+    rollItemMacro, 
     AbsoluteTestRoll,
     RelativeTestRoll,
   };
