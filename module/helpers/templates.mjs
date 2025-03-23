@@ -6,9 +6,8 @@
 export const preloadHandlebarsTemplates = async function () {
   return loadTemplates([
     // Actor partials.
-    'systems/ins-mv/templates/actor/parts/actor-features.hbs',
     'systems/ins-mv/templates/actor/parts/actor-items.hbs',
-    'systems/ins-mv/templates/actor/parts/actor-spells.hbs',
+    'systems/ins-mv/templates/actor/parts/actor-powers.hbs',
     'systems/ins-mv/templates/actor/parts/actor-wounds.hbs',
     'systems/ins-mv/templates/actor/parts/actor-effects.hbs',
     'systems/ins-mv/templates/actor/parts/actor-identity.hbs',

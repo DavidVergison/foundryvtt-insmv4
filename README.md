@@ -10,3 +10,6 @@ gestion des blessures / fatigue
 ~~info-bulles sur les talents ?~~
 ~~separer les declencheurs clic-droit/clic-gauche~~
 ~~gestion des langues~~
+
+jet dés des des objets pour les pnj
+trads ?

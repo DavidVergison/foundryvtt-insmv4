@@ -38,12 +38,6 @@
       "Actor": "InsMv Actor Sheet",
       "Item": "InsMv Item Sheet"
     },
-    "Item": {
-      "Spell": {
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
-      }
-    },
     "Effect": {
       "Source": "Source",
       "Toggle": "Toggle Effect",
@@ -59,9 +53,7 @@
       "npc": "NPC"
     },
     "Item": {
-      "item": "Item",
-      "feature": "Feature",
-      "spell": "Spell"
+      "item": "Item"
     }
   }
 }

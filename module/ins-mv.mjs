@@ -68,10 +68,8 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = InsMvItem;
   CONFIG.Item.dataModels = {
     item: models.InsMvItem,
-    feature: models.InsMvFeature,
     weapon: models.InsMvWeapon,
     armor: models.InsMvArmor,
-    spell: models.InsMvSpell,
     power: models.InsMvPower
   }
 
