@@ -363,17 +363,6 @@
   flex: 0 0 200px;
   padding: 0 8px;
 }
-.ins-mv .effects .item .effect-source,
-.ins-mv .effects .item .effect-duration,
-.ins-mv .effects .item .effect-controls {
-  text-align: center;
-  border-left: 1px solid #c9c7b8;
-  border-right: 1px solid #c9c7b8;
-  font-size: 12px;
-}
-.ins-mv .effects .item .effect-controls {
-  border: none;
-}
 .ins-mv .injury-container {
   display: flex;
   flex-direction: column;

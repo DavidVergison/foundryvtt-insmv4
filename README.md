@@ -13,3 +13,5 @@ gestion des blessures / fatigue
 
 jet dés des des objets pour les pnj
 trads ?
+~~supprimer item-effets ?~~
+items simples (hors armure et armes)
