@@ -30,7 +30,4 @@ export default class InsMvNPC extends InsMvActorBase {
     return schema;
   }
 
-  prepareDerivedData() {
-    this.xp = this.cr * this.cr * 100;
-  }
 }

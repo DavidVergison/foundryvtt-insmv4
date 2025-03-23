@@ -1,23 +1,26 @@
 
-<div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{key}}">
 {{#if (includes attributes "exotique")}}
+<div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{lookup @root.system.exotic (concat key '_label')}}">
     <i class="fas fa-dice-d20"></i>
     {{editOrView 
         (lookup @root.options "edition") 
         (concat "system.exotic." key "_label") 
         (lookup @root.system.exotic (concat key '_label')) 
         class="x"}}
+</div>
 {{else}}
+<div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{key}}">
     <label for="system.skills.{{key}}" title="{{lookup @root.desc.Skills key}}">
         {{key}}
         {{#if (includes attributes "innée")}}*{{/if}}
     </label>
-{{/if}}
 </div>
+{{/if}}
+
 
 {{#if (includes attributes "spe")}}
 
-    <div class="grid-span-4 flex-group-left rollable" data-roll="s:{{key}}">
+    <div class="grid-span-4 flex-group-left rollable" data-roll="s:{{lookup @root.system.spe (concat key '_label_spe')}}">
         (<i class="fas fa-dice-d20"></i>
         {{editOrView 
             (lookup @root.options "edition") 

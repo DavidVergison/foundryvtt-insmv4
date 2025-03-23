@@ -221,13 +221,14 @@ export class InsMvActorSheet extends ActorSheet {
    * @private
    */
   async _onRoll(event) {
-    console.log("event", {event, o: this.object})
+    console.log("event", {event, o: this.object, t: this})
     event.preventDefault();
 
+    const actorRollData = this.object.system.getRollData()
+    console.log("actorRollData", actorRollData)
     let faith = this.object.system.caracteristics["Foi"]
 
     const element = event.currentTarget;
-    const dataset = element.dataset;    
     const roll = element.dataset.roll;    
     let marginBonus = null
     let marginBonusName = null
@@ -237,36 +238,32 @@ export class InsMvActorSheet extends ActorSheet {
       let score = 0
       let att = roll.substring(2)
 
-      if (roll.startsWith("c:")){        
-        score = this.object.system.caracteristics[att]
-      }
-      if (roll.startsWith("t:")){
-        score = this.object.system.skills[att]
-      }
-      if (roll.startsWith("s:")){
-        score = this.object.system.spe[att+"_spe"]
-      } 
-      if (roll.startsWith("i:")){
+      if (roll.startsWith("i:")){        
         if(event.type == "contextmenu") { return }
+
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
 
         if (item.type == "weapon"){
-          score = this.object.system.skills[
-            item.system.skill
-          ]
-          if (this.object.system.spe[item.system.skill+"_label_spe"] == item.system.spe){
-            score = this.object.system.spe[item.system.skill+"_spe"]
+          const [skillName, speName] = att.split('/');
+          score = actorRollData[skillName]
+          if(speName in actorRollData){
+            score = actorRollData[speName]
           }
+
           marginBonus = item.system.power
           marginBonusName = "puissance"
         }
         if (item.type == "armor"){
-          score = this.object.system.skills["Defense"]
+          score = actorRollData["Défense"]
           marginBonus = item.system.armor
           marginBonusName = "protection"
         } 
-      } 
+      } else {
+        score = actorRollData[att]
+      }
+      console.log("att", att)
+      console.log("score", score)
 
       if(event.type == "contextmenu") {
         const relRoll = new game.insmv.RelativeTestRoll()

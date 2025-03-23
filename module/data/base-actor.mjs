@@ -1,5 +1,7 @@
 import { INS_MV } from "../helpers/config.mjs";
 import InsMvDataModel from "./base-model.mjs";
+import { INS_MV_CONVERT } from "../helpers/convert.mjs";
+
 
 export default class InsMvActorBase extends InsMvDataModel {
 
@@ -57,7 +59,7 @@ export default class InsMvActorBase extends InsMvDataModel {
       })
     })
 
-    const requiredCaracteristic = { required: true, nullable: false };
+    const requiredCaracteristic = { required: true, nullable: false, initial: "2" };
 
     schema.caracteristics = new fields.SchemaField({})
     for (const carac in INS_MV.sheetDictionary.Caracteristiques) {
@@ -67,5 +69,40 @@ export default class InsMvActorBase extends InsMvDataModel {
 
     
     return schema;
+  }
+
+  getRollData() {
+    console.log("getRollData", this)
+    const data = {};
+    for (const carac in INS_MV.sheetDictionary.Caracteristiques) {
+      data[carac] = INS_MV_CONVERT.convertPlus(this.caracteristics[carac])
+    }
+
+    for (const talent in INS_MV.sheetDictionary.Talents) {
+      const attributes = INS_MV.sheetDictionary.Talents[talent];
+
+      if (!talent in this.skills || !this.skills[talent] || attributes.includes("liste")) {
+        continue;
+      }
+
+      if (attributes.includes("spe")) {
+        if (!talent + '_spe' in this.spe || !this.spe[talent + '_spe']) {
+          continue;
+        }
+
+        if (attributes.includes("exotique")){
+          data[this.exotic[talent + '_label']] = INS_MV_CONVERT.convertPlus(this.skills[talent])
+        } else{
+          data[talent] = INS_MV_CONVERT.convertPlus(this.skills[talent]) 
+        }
+        data[this.spe[talent + '_label_spe']] = INS_MV_CONVERT.convertPlus(this.spe[talent + '_spe'])
+
+      } else {
+        data[talent] = INS_MV_CONVERT.convertPlus(this.skills[talent])
+      }
+    }
+    console.log("getRollData", data)
+
+    return data
   }
 }
