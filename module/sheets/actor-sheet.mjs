@@ -225,13 +225,13 @@ export class InsMvActorSheet extends ActorSheet {
     event.preventDefault();
 
     const actorRollData = this.object.system.getRollData()
-    console.log("actorRollData", actorRollData)
-    let faith = this.object.system.caracteristics["Foi"]
+    let faith = actorRollData["Foi"]
 
     const element = event.currentTarget;
     const roll = element.dataset.roll;    
     let marginBonus = null
     let marginBonusName = null
+    let modifier = 0
 
     if (roll) {
       // jet de caracteristique
@@ -243,24 +243,24 @@ export class InsMvActorSheet extends ActorSheet {
 
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
-
+        console.log("item", item)
         if (item.type == "weapon"){
           const [skillName, speName] = att.split('/');
-          score = actorRollData[skillName]
+          score = actorRollData[skillName] || 0
           if(speName in actorRollData){
             score = actorRollData[speName]
           }
-
+          modifier = item.system.precision
           marginBonus = item.system.power
           marginBonusName = "puissance"
         }
         if (item.type == "armor"){
-          score = actorRollData["Défense"]
+          score = actorRollData["Défense"] || 0
           marginBonus = item.system.armor
           marginBonusName = "protection"
         } 
       } else {
-        score = actorRollData[att]
+        score = actorRollData[att] || 0
       }
       console.log("att", att)
       console.log("score", score)
@@ -283,6 +283,7 @@ export class InsMvActorSheet extends ActorSheet {
           score,
           marginBonus, // item bonus
           marginBonusName, //item name
+          modifier //ex : weapon precision
         })
       }
 

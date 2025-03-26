@@ -85,7 +85,7 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
   async prompt(rollConfig) {
     console.log("prompt", rollConfig)
     const baseChance = AbsoluteTestRollDialog.calculateChance({
-      modifier: 0,
+      modifier: rollConfig.modifier,
       score: rollConfig.score,
       actorRisk: 0,
       difficulty: 0
@@ -94,11 +94,11 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
     // Define initial context data for the dialog.
     const dialogContext = {
       actorScore: rollConfig.score,
-      modifier: 0,
+      modifier: rollConfig.modifier,
       actorRisk: 0,
       bonus: 0,
       chance: baseChance.chance,
-      computedScore: rollConfig.score,
+      computedScore: baseChance.computedScore,
       difficulties: INS_MV.DIFFICULTIES,
     };
 

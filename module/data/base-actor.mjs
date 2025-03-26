@@ -84,21 +84,21 @@ export default class InsMvActorBase extends InsMvDataModel {
       if (!talent in this.skills || !this.skills[talent] || attributes.includes("liste")) {
         continue;
       }
+      
+      data[talent] = INS_MV_CONVERT.convertPlus(this.skills[talent])
 
       if (attributes.includes("spe")) {
-        if (!talent + '_spe' in this.spe || !this.spe[talent + '_spe']) {
-          continue;
-        }
-
         if (attributes.includes("exotique")){
           data[this.exotic[talent + '_label']] = INS_MV_CONVERT.convertPlus(this.skills[talent])
         } else{
           data[talent] = INS_MV_CONVERT.convertPlus(this.skills[talent]) 
         }
-        data[this.spe[talent + '_label_spe']] = INS_MV_CONVERT.convertPlus(this.spe[talent + '_spe'])
 
-      } else {
-        data[talent] = INS_MV_CONVERT.convertPlus(this.skills[talent])
+        if (!talent + '_spe' in this.spe || !this.spe[talent + '_spe']) {
+          continue;
+        }
+
+        data[this.spe[talent + '_label_spe']] = INS_MV_CONVERT.convertPlus(this.spe[talent + '_spe'])
       }
     }
     console.log("getRollData", data)

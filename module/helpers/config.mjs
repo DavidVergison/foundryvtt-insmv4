@@ -97,11 +97,11 @@ INS_MV.sheetDictionary = {
 
 INS_MV.NPCsheetDictionary = {
   "Talents": {
-    "libre01": ["exotique"],
-    "libre02": ["exotique"],
-    "libre03": ["exotique"],
-    "libre04": ["exotique"],
-    "libre05": ["exotique"],
+    "libre01": ["exotique", "spe"],
+    "libre02": ["exotique", "spe"],
+    "libre03": ["exotique", "spe"],
+    "libre04": ["exotique", "spe"],
+    "libre05": ["exotique", "spe"],
     "libre06": ["exotique", "spe"],
     "libre07": ["exotique", "spe"],
     "libre08": ["exotique", "spe"],

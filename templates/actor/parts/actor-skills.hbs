@@ -1,7 +1,6 @@
 
 {{#if (includes attributes "exotique")}}
 <div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{lookup @root.system.exotic (concat key '_label')}}">
-    <i class="fas fa-dice-d20"></i>
     {{editOrView 
         (lookup @root.options "edition") 
         (concat "system.exotic." key "_label") 
@@ -9,7 +8,7 @@
         class="x"}}
 </div>
 {{else}}
-<div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{key}}">
+<div class="grid-span-4 flex-group-left {{#if (or (includes attributes "innée") (lookup @root.system.skills key))}}rollable{{/if}}" data-roll="t:{{key}}">
     <label for="system.skills.{{key}}" title="{{lookup @root.desc.Skills key}}">
         {{key}}
         {{#if (includes attributes "innée")}}*{{/if}}
@@ -17,12 +16,12 @@
 </div>
 {{/if}}
 
-
 {{#if (includes attributes "spe")}}
 
-    <div class="grid-span-4 flex-group-left rollable" data-roll="s:{{lookup @root.system.spe (concat key '_label_spe')}}">
-        (<i class="fas fa-dice-d20"></i>
-        {{editOrView 
+    <div class="grid-span-4 flex-group-left 
+        {{#if (lookup @root.system.spe (concat key '_spe'))}}rollable{{/if}}" 
+        data-roll="s:{{lookup @root.system.spe (concat key '_label_spe')}}">
+        ({{editOrView 
             (lookup @root.options "edition") 
             (concat "system.spe." key "_label_spe") 
             (lookup @root.system.spe (concat key '_label_spe')) 

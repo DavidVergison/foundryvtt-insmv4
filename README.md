@@ -16,5 +16,6 @@ TODO :
 ~~supprimer item-effets ?~~
 items simples (hors armure et armes)
 ~~actor-character.mjs -> getRollData ?~~
-malus de précision des armes
-cacher les competences vide des PNJs ?
+~~malus de précision des armes~~
+~~cacher les competences vide des PNJs ?~~
+~~correction bug jet de des NPC~~

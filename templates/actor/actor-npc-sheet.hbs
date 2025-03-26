@@ -16,11 +16,16 @@
       <a class="item" data-tab="powers">Powers</a>
     </nav>
 
+    {{log "@root.system.spe" @root.system.spe}}
     <div class="tab" data-tab="skills" data-group="mainTabs">
       <section class="grid grid-12col">
           <div class="items-header grid-span-12"><p>Talents</p></div>
           {{#each this.config.talents.npc as |attributes key|}}
-            {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key }}
+            {{log "@root.options" (lookup @root.options "edition")}}
+            {{log "@root.system.exotic" (lookup @root.system.exotic (concat key '_label'))}}
+            {{#if (or (lookup @root.options "edition") (lookup @root.system.exotic (concat key '_label')))}}
+              {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key }}
+            {{/if}}           
           {{/each}}
       </section>
     </div>
