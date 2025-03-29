@@ -1,11 +1,11 @@
-<p><strong>{{actorName}} fait un test de {{testedAttribute}}</strong></p>
-<p title="seuil: {{threshold}}"><strong>Résultat :</strong> {{rollResult}}</p>
+<p><strong>{{name}} {{localize "INS_MV.Dice.RollTest"}} {{#if (isAbility testedAttribute)}}{{localize (concat "INS_MV.Ability." testedAttribute ".long")}}{{else}}{{localizeWithDefault (concat "INS_MV.Talents." testedAttribute) testedAttribute}}{{/if}}</strong></p>
+<p title="seuil: {{threshold}}"><strong>{{localize "INS_MV.Dice.Result"}} :</strong> {{rollResult}}</p>
 {{#if success}}
   <span style="color: green;" title="{{concatTitle successMarginParts}}">
-    Succès ! Avec une marge de {{successMargin}}
+    {{localize "INS_MV.Dice.Success"}} {{localize "INS_MV.Dice.Margin"}} {{successMargin}}
   </span>
 {{else}}
   <span style="color: red;" title="{{concatTitle failMarginParts}}">
-    Échec ! Avec une marge de {{failMargin}}
+    {{localize "INS_MV.Dice.Failure"}} {{localize "INS_MV.Dice.Margin"}} {{failMargin}}
   </span>
 {{/if}}

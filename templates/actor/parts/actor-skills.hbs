@@ -1,4 +1,3 @@
-
 {{#if (includes attributes "exotique")}}
 <div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{lookup @root.system.exotic (concat key '_label')}}">
     {{editOrView 
@@ -10,7 +9,7 @@
 {{else}}
 <div class="grid-span-4 flex-group-left {{#if (or (includes attributes "innée") (lookup @root.system.skills key))}}rollable{{/if}}" data-roll="t:{{key}}">
     <label for="system.skills.{{key}}" title="{{lookup @root.desc.Skills key}}">
-        {{key}}
+        {{localize (concat "INS_MV.Talents." key)}}
         {{#if (includes attributes "innée")}}*{{/if}}
     </label>
 </div>

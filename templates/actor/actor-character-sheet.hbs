@@ -10,26 +10,26 @@
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="mainTabs">
       {{!-- Default tab is specified in actor-sheet.mjs --}}
-      <a class="item" data-tab="skills">Talents</a>
-      <a class="item" data-tab="wounds">Blessures</a>
-      <a class="item" data-tab="items">Items</a>
-      <a class="item" data-tab="powers">Powers</a>
+      <a class="item" data-tab="skills">{{localize "INS_MV.Tabs.Skills"}}</a>
+      <a class="item" data-tab="wounds">{{localize "INS_MV.Tabs.Wounds"}}</a>
+      <a class="item" data-tab="items">{{localize "INS_MV.Tabs.Items"}}</a>
+      <a class="item" data-tab="powers">{{localize "INS_MV.Tabs.Powers"}}</a>
     </nav>
 
     {{log "@root.system.spe" @root.system.spe}}
     <div class="tab" data-tab="skills" data-group="mainTabs">
       <section class="grid grid-12col">
-          <div class="items-header grid-span-12"><p>Talents principaux</p></div>
+          <div class="items-header grid-span-12"><p>{{localize "INS_MV.Skills.Main"}}</p></div>
           {{#each this.config.talents.main as |attributes key|}}
             {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key }}
           {{/each}}
           
-          <div class="items-header grid-span-12"><p>Talents secondaires</p></div>
+          <div class="items-header grid-span-12"><p>{{localize "INS_MV.Skills.Secondary"}}</p></div>
           {{#each this.config.talents.secondary as |attributes key|}}
             {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key}}
           {{/each}}
 
-          <div class="items-header grid-span-12"><p>Talents exotiques</p></div>
+          <div class="items-header grid-span-12"><p>{{localize "INS_MV.Skills.Exotic"}}</p></div>
           {{#each this.config.talents.exotic as |attributes key|}}
             {{#if (or (lookup @root.options "edition") (lookup @root.system.exotic (concat key '_label')))}}
               {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key }}

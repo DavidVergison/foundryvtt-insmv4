@@ -239,25 +239,30 @@ export class InsMvActorSheet extends ActorSheet {
       let att = roll.substring(2)
 
       if (roll.startsWith("i:")){        
-        if(event.type == "contextmenu") { return }
-
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
+        if(event.type == "contextmenu" && item.type != "power") { return }
+
         console.log("item", item)
         if (item.type == "weapon"){
           const [skillName, speName] = att.split('/');
           score = actorRollData[skillName] || 0
+          att = skillName
           if(speName in actorRollData){
             score = actorRollData[speName]
+            att = speName
           }
           modifier = item.system.precision
           marginBonus = item.system.power
           marginBonusName = "puissance"
-        }
-        if (item.type == "armor"){
+        } else if (item.type == "armor"){
           score = actorRollData["Défense"] || 0
+          att = "Défense"
           marginBonus = item.system.armor
           marginBonusName = "protection"
+        } else if (item.type == "power"){
+          score = item.system.level || 0
+          att = item.name
         } 
       } else {
         score = actorRollData[att] || 0

@@ -1,25 +1,24 @@
-
 <section class="grid grid-4col">
-  <button type="button" class="toggle-edit grid-span-4">Mode édition</button>
+  <button type="button" class="toggle-edit grid-span-4">{{localize "INS_MV.Identity.EditMode"}}</button>
   <div class="header-fields grid-span-1">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
   </div>
   <div class="header-fields grid-span-3">
     <h1 class="charname">
-      <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'INS_MV.Identity.Name'}}"/>
     </h1>
     <div class="resource-content grid grid-4col">
         <div class="grid-span-3">
-            <label for="system.boss" class="resource-label">Prince/Archange</label>
-            <input name="system.boss" type="text" value="{{system.boss}}" placeholder="Boss"/>
+            <label for="system.boss" class="resource-label">{{localize "INS_MV.Identity.Boss"}}</label>
+            <input name="system.boss" type="text" value="{{system.boss}}" placeholder="{{localize 'INS_MV.Identity.Boss'}}"/>
         </div>
         <div class="grid-span-1">
-            <label for="system.rank" class="resource-label align-right">grade</label>
+            <label for="system.rank" class="resource-label align-right">{{localize "INS_MV.Identity.Rank"}}</label>
             <input name="system.rank" type="text" value="{{system.rank}}" placeholder="0" data-dtype="Number"/>
         </div>
         <div class="grid-span-2 grid grid-5col">
-            <label for="system.health" class="resource-label grid-span-3">Fatigue</label>
-            <input class="grid-span-1" name="system.health.value" type="text" value="{{system.health.value}}" placeholder="Boss"/>
+            <label for="system.health" class="resource-label grid-span-3">{{localize "INS_MV.Identity.Health"}}</label>
+            <input class="grid-span-1" name="system.health.value" type="text" value="{{system.health.value}}" placeholder="{{localize 'INS_MV.Identity.Health'}}"/>
             {{editOrView 
                 (lookup @root.options "edition") 
                 "system.health.max"
@@ -27,8 +26,8 @@
                 class="grid-span-1"}}
         </div>
         <div class="grid-span-2 grid grid-5col">
-            <label for="system.power" class="resource-label grid-span-3">Pouvoir</label>
-            <input class="grid-span-1" name="system.power.value" type="text" value="{{system.power.value}}" placeholder="Boss"/>
+            <label for="system.power" class="resource-label grid-span-3">{{localize "INS_MV.Identity.Power"}}</label>
+            <input class="grid-span-1" name="system.power.value" type="text" value="{{system.power.value}}" placeholder="{{localize 'INS_MV.Identity.Power'}}"/>
             {{editOrView 
                 (lookup @root.options "edition") 
                 "system.power.max"
@@ -39,7 +38,7 @@
   </div>
 
   <div class="power-info grid-span-4">
-    <h2>Pouvoirs de grade</h2>
+    <h2>{{localize "INS_MV.Identity.RankPowers"}}</h2>
     {{editOrView 
         (lookup @root.options "edition") 
          "system.rankPowers"
@@ -47,7 +46,7 @@
         class="x"}}
   </div>
   <div class="title-info grid-span-4">
-    <h2>Titres</h2>
+    <h2>{{localize "INS_MV.Identity.Titles"}}</h2>
     {{editOrView 
         (lookup @root.options "edition") 
          "system.titles"

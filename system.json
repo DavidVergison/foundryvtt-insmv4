@@ -40,5 +40,17 @@
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power"
+  "secondaryTokenAttribute": "power",
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "static/languages/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "French",
+      "path": "static/languages/fr.json"
+    }
+  ]
 }

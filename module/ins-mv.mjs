@@ -162,6 +162,17 @@ Handlebars.registerHelper("woundSymbol", function(value) {
   return new Handlebars.SafeString(symbols[value] || "?");
 });
 
+Handlebars.registerHelper("isAbility", function(value) {
+  return Object.keys(CONFIG.INS_MV.sheetDictionary.Caracteristiques).includes(value);
+});
+
+Handlebars.registerHelper("localizeWithDefault", function(key, defaultValue) {
+  // S'assurer que la clé est une chaîne de caractères
+  const keyString = String(key);
+  const translation = game.i18n.localize(keyString);
+  return translation === keyString ? defaultValue : translation;
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */

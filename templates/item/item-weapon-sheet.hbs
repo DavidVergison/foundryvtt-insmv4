@@ -18,8 +18,8 @@
 
   {{! Sheet Tab Navigation }}
   <nav class='sheet-tabs tabs' data-group='primary'>
-    <a class='item' data-tab='description'>Description</a>
-    <a class='item' data-tab='attributes'>Attributes</a>
+    <a class='item' data-tab='description'>{{localize "INS_MV.ItemSheet.Description"}}</a>
+    <a class='item' data-tab='attributes'>{{localize "INS_MV.ItemSheet.Attributes"}}</a>
   </nav>
 
   {{! Sheet Body }}
@@ -40,40 +40,40 @@
     {{! Attributes Tab }}
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
       {{! As you add new fields, add them in here! }}
-      <div class='resource'>
-        <label class='resource-label'>Puissance</label>
+      <div class='form-group'>
+        <label>{{localize "INS_MV.Weapon.Power"}}</label>
         <input
-          type='text'
+          type='number'
           name='system.power'
           value='{{system.power}}'
           data-dtype='Number'
         />
       </div>
-      <div class='resource'>
-        <label class='resource-label'>Précision</label>
+      <div class='form-group'>
+        <label>{{localize "INS_MV.Weapon.Precision"}}</label>
         <input
-          type='text'
+          type='number'
           name='system.precision'
           value='{{system.precision}}'
           data-dtype='Number'
         />
       </div>
-      <div class='resource'>
-        <label class='resource-label'>Talent</label>
-        <input
-          type='text'
-          name='system.skill'
-          value='{{system.skill}}'
-          data-dtype='String'
-        />
+      <div class='form-group'>
+        <label>{{localize "INS_MV.Weapon.Skill"}}</label>
+        <select name='system.skill'>
+          {{#select system.skill}}
+            {{#each ../skills as |skill key|}}
+              <option value='{{key}}'>{{localize skill}}</option>
+            {{/each}}
+          {{/select}}
+        </select>
       </div>
-      <div class='resource'>
-        <label class='resource-label'>Talent Spé</label>
+      <div class='form-group'>
+        <label>{{localize "INS_MV.Weapon.Speciality"}}</label>
         <input
           type='text'
-          name='system.spe'
-          value='{{system.spe}}'
-          data-dtype='String'
+          name='system.speciality'
+          value='{{system.speciality}}'
         />
       </div>
     </div>

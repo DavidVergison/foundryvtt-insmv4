@@ -12,7 +12,7 @@ export class RelativeTestRoll extends AbstractInsTestRoll {
             computedScore,
             actorRisk,
             actorFaith,
-            actorName,
+            name,
             testedAttribute,
             targetRisk
         } = data;
@@ -30,8 +30,8 @@ export class RelativeTestRoll extends AbstractInsTestRoll {
 
         return {
             rollResult: roll.result,
-            actorName,
-            testedAttribute: testedAttribute + " (opposition)",
+            name: name + " (opposition)",
+            testedAttribute,
             threshold,
             success: roll.d66 <= threshold,
             successMargin,
@@ -92,7 +92,7 @@ export class RelativeTestRoll extends AbstractInsTestRoll {
             computedScore,
             actorRisk,
             actorFaith: INS_MV_CONVERT.convertPlus(faith),
-            actorName: name,
+            name,
             testedAttribute,
             targetRisk
         }
