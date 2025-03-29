@@ -1,0 +1,24 @@
+<div class="injury-container">
+    {{#each this.system.wounds as |woundCategory category|}}
+        <div class="injury-row">
+            <span class="injury-label">
+                {{#if (eq category "lightWounds")}} {{localize "INS_MV.Wounds.Light"}} {{/if}}
+                {{#if (eq category "seriousWounds")}} {{localize "INS_MV.Wounds.Serious"}} {{/if}}
+                {{#if (eq category "fatalWounds")}} {{localize "INS_MV.Wounds.Fatal"}} {{/if}}
+                {{#if (eq category "death")}} {{localize "INS_MV.Wounds.Death"}} {{/if}}
+                ({{editOrView 
+                    (lookup @root.options "edition") 
+                    (concat "system." category "Threshold")
+                    (lookup @root.system (concat category "Threshold")) 
+                    class="x"}}): 
+            </span>
+            <div class="injury-buttons">          
+                {{#each woundCategory as |value key|}}
+                    <button class="wound" data-type="{{category}}" data-key="{{key}}">
+                        {{woundSymbol value}}
+                    </button>
+                {{/each}}
+            </div>
+        </div>
+    {{/each}}
+</div>

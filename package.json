@@ -1,0 +1,24 @@
+{
+  "name": "ins-mv",
+  "version": "2.0.0",
+  "description": "CSS compiler for the InsMv system",
+  "scripts": {
+    "createSymlinks": "node ./tools/create-symlinks.mjs",
+    "postinstall": "npm run createSymlinks",
+    "build": "sass static/src/scss/ins-mv.scss static/css/ins-mv.css --style=expanded --no-source-map",
+    "watch": "sass static/src/scss/ins-mv.scss static/css/ins-mv.css --style=expanded --source-map --watch"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "Asacolips",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "sass": "^1.53.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

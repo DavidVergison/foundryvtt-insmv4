@@ -1,0 +1,71 @@
+{{#if (includes attributes "exotique")}}
+<div class="grid-span-4 flex-group-left {{#unless (includes attributes 'liste')}}rollable{{/unless}}" data-roll="t:{{lookup @root.system.exotic (concat key '_label')}}">
+    {{editOrView 
+        (lookup @root.options "edition") 
+        (concat "system.exotic." key "_label") 
+        (lookup @root.system.exotic (concat key '_label')) 
+        class="x"}}
+</div>
+{{else}}
+<div class="grid-span-4 flex-group-left {{#if (or (includes attributes "innée") (lookup @root.system.skills key))}}rollable{{/if}}" data-roll="t:{{key}}">
+    <label for="system.skills.{{key}}" title="{{lookup @root.desc.Skills key}}">
+        {{localize (concat "INS_MV.Talents." key)}}
+        {{#if (includes attributes "innée")}}*{{/if}}
+    </label>
+</div>
+{{/if}}
+
+{{#if (includes attributes "spe")}}
+
+    <div class="grid-span-4 flex-group-left 
+        {{#if (lookup @root.system.spe (concat key '_spe'))}}rollable{{/if}}" 
+        data-roll="s:{{lookup @root.system.spe (concat key '_label_spe')}}">
+        ({{editOrView 
+            (lookup @root.options "edition") 
+            (concat "system.spe." key "_label_spe") 
+            (lookup @root.system.spe (concat key '_label_spe')) 
+            class="x"}})
+    </div>
+    
+    {{editOrView 
+        (lookup @root.options "edition") 
+        (concat "system.skills." key) 
+        (lookup @root.system.skills key) 
+        class="grid-span-1"}} 
+
+    <div class="grid-span-2 flex-group-left">
+        ({{editOrView 
+            (lookup @root.options "edition") 
+            (concat "system.spe." key '_spe') 
+            (lookup @root.system.spe (concat key '_spe')) 
+            class="x"}})
+    </div>
+
+{{else}}
+    {{#if (includes attributes "liste")}}
+        {{editOrView 
+            (lookup @root.options "edition") 
+            (concat "system.skills." key) 
+            (lookup @root.system.skills key) 
+            class="grid-span-7"}}
+    {{else}}
+        <p class="grid-span-4"></p>
+        {{editOrView 
+            (lookup @root.options "edition") 
+            (concat "system.skills." key) 
+            (lookup @root.system.skills key) 
+            class="grid-span-3"}}
+    {{/if}}
+{{/if}}
+
+<div class="grid-span-1">
+    {{#if (includes attributes "exotique")}}
+        {{editOrView 
+            (lookup @root.options "edition") 
+            (concat "system.exotic." key "_carac") 
+            (lookup @root.system.exotic (concat key '_carac')) 
+            class="x"}}
+    {{else}}
+        <label for="system.skills.{{key}}">{{findPrefixedValue attributes "c"}}</label>
+    {{/if}}
+</div>

@@ -1,0 +1,22 @@
+{{log "character-attribute" this}}
+<section class="grid grid-6col">
+    {{#each this.config.sheetDictionary.Caracteristiques as |carac key|}}
+        <label for="system.caracteristics.{{key}}" 
+            class="resource-label rollable flexlarge align-right" 
+            title="xx"
+            data-roll="c:{{key}}" 
+            data-label="{{localize (concat "INS_MV.Ability." key ".long")}}">
+            {{localize (concat "INS_MV.Ability." key ".long")}}
+        </label>
+        <div class=" flex-group-left">
+            <i class="fas fa-dice-d20" data-roll="c:{{key}}" data-label="{{localize (concat "INS_MV.Ability." key ".long")}}"></i>
+
+            {{editOrView 
+                (lookup @root.options "edition") 
+                (concat "system.caracteristics." key) 
+                (lookup @root.system.caracteristics key) 
+                class="x"}}
+
+        </div>
+    {{/each}}
+</section>
