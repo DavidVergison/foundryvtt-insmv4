@@ -11,7 +11,7 @@ export class RelativeTestRollDialog extends foundry.applications.api.DialogV2 {
   static async show(dialogContext) {
     console.log("RelativeTestRollDialog.show",dialogContext)
     // Render the dialog template with the context.
-    const content = await renderTemplate("systems/ins-mv/module/dices/templates/relative.html", dialogContext);
+    const content = await renderTemplate("systems/insmv/module/dices/templates/relative.html", dialogContext);
 
     // Open the dialog and wait for user input.
     const data = await RelativeTestRollDialog.wait({

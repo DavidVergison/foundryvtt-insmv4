@@ -22,7 +22,7 @@ export class InsMvActorSheet extends ActorSheet {
   /** @override */
   get template() {
     console.log("this.actor.type", this.actor.type)
-    return `systems/ins-mv/templates/actor/actor-${this.actor.type}-sheet.hbs`;
+    return `systems/insmv/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */

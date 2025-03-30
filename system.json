@@ -14,11 +14,11 @@
   "bugs": "https://github.com/DavidVergison/foundryvtt-insmv4/issues",
   "changelog": "CHANGELOG.md",
   "media": [
-      {
-          "type": "setup",
-          "url": "systems/ins-mv/static/assets/anvil-impact.png",
-          "thumbnail": "systems/ins-mv/static/assets/anvil-impact.png"
-      }
+    {
+      "type": "setup",
+      "url": "systems/insmv/static/assets/anvil-impact.png",
+      "thumbnail": "systems/insmv/static/assets/anvil-impact.png"
+    }
   ],
   "version": "1.0.0",
   "compatibility": {
@@ -36,7 +36,7 @@
   "socket": false,
   "manifest": "https://github.com/DavidVergison/foundryvtt-insmv4/releases/latest/download/system.json",
   "download": "https://github.com/DavidVergison/foundryvtt-insmv4/releases/latest/download/ins-mv.zip",
-  "background": "systems/ins-mv/static/assets/anvil-impact.png",
+  "background": "systems/insmv/static/assets/anvil-impact.png",
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
