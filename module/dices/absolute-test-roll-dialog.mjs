@@ -10,7 +10,7 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
    */
   static async show(dialogContext) {
     // Render the dialog template with the context.
-    const content = await renderTemplate("systems/ins-mv/module/dices/templates/absolute.html", dialogContext);
+    const content = await renderTemplate("systems/insmv/module/dices/templates/absolute.html", dialogContext);
 
     // Open the dialog and wait for user input.
     const data = await AbsoluteTestRollDialog.wait({

@@ -1,56 +1,56 @@
 {
-  "id": "ins-mv",
+  "id": "insmv",
   "title": "Ins/Mv",
-  "description": "The Ins/Mv system for FoundryVTT!",
+  "description": "Système Ins/Mv pour FoundryVTT - Un système de jeu basé sur le système d666 et la belle LN.",
   "authors": [
-    {
-      "name": "Asacolips",
-      "discord": "asacolips"
-    },
-    {
-      "name": "Lee Talman",
-      "discord": ".pizzaWizard"
-    }
+      {
+          "name": "David V.",
+          "discord": "Thalion59fr#0194"
+      }
   ],
-  "url": "Replace this with a link to your public repository",
+  "url": "https://github.com/DavidVergison/foundryvtt-insmv4",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
+  "bugs": "https://github.com/DavidVergison/foundryvtt-insmv4/issues",
   "changelog": "CHANGELOG.md",
   "media": [
     {
       "type": "setup",
-      "url": "systems/ins-mv/static/assets/anvil-impact.png",
-      "thumbnail": "systems/ins-mv/static/assets/anvil-impact.png"
+      "url": "systems/insmv/static/assets/anvil-impact.png",
+      "thumbnail": "systems/insmv/static/assets/anvil-impact.png"
     }
   ],
-  "version": "2.0.0",
+  "version": "1.0.0",
   "compatibility": {
-    "minimum": 11,
-    "verified": "11.315"
+      "minimum": 12,
+      "verified": "12"
   },
-  "esmodules": ["module/ins-mv.mjs"],
-  "styles": ["static/css/ins-mv.css"],
+  "esmodules": [
+      "module/ins-mv.mjs"
+  ],
+  "styles": [
+      "static/css/ins-mv.css"
+  ],
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
-  "download": "This must link to a .zip file of the current version",
-  "background": "systems/ins-mv/static/assets/anvil-impact.png",
+  "manifest": "https://github.com/DavidVergison/foundryvtt-insmv4/releases/latest/download/system.json",
+  "download": "https://github.com/DavidVergison/foundryvtt-insmv4/releases/latest/download/insmv.zip",
+  "background": "systems/insmv/static/assets/anvil-impact.png",
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
   "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "static/languages/en.json"
-    },
-    {
-      "lang": "fr",
-      "name": "French",
-      "path": "static/languages/fr.json"
-    }
+      {
+          "lang": "en",
+          "name": "English",
+          "path": "static/languages/en.json"
+      },
+      {
+          "lang": "fr",
+          "name": "French",
+          "path": "static/languages/fr.json"
+      }
   ]
 }

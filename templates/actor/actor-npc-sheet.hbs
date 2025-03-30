@@ -2,10 +2,10 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    {{> "systems/ins-mv/templates/actor/parts/actor-identity.hbs"}}
+    {{> "systems/insmv/templates/actor/parts/actor-identity.hbs"}}
   </header>
   <section class="sheet-body">
-    {{> "systems/ins-mv/templates/actor/parts/actor-attributes.hbs"}}
+    {{> "systems/insmv/templates/actor/parts/actor-attributes.hbs"}}
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="mainTabs">
@@ -24,22 +24,22 @@
             {{log "@root.options" (lookup @root.options "edition")}}
             {{log "@root.system.exotic" (lookup @root.system.exotic (concat key '_label'))}}
             {{#if (or (lookup @root.options "edition") (lookup @root.system.exotic (concat key '_label')))}}
-              {{> "systems/ins-mv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key }}
+              {{> "systems/insmv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key }}
             {{/if}}           
           {{/each}}
       </section>
     </div>
     
     <div class="tab" data-tab="wounds" data-group="mainTabs">
-      {{> "systems/ins-mv/templates/actor/parts/actor-wounds.hbs"}}
+      {{> "systems/insmv/templates/actor/parts/actor-wounds.hbs"}}
     </div>
     
     <div class="tab" data-tab="items" data-group="mainTabs">
-      {{> "systems/ins-mv/templates/actor/parts/actor-items.hbs"}}
+      {{> "systems/insmv/templates/actor/parts/actor-items.hbs"}}
     </div>
     
     <div class="tab" data-tab="powers" data-group="mainTabs">
-      {{> "systems/ins-mv/templates/actor/parts/actor-powers.hbs"}}
+      {{> "systems/insmv/templates/actor/parts/actor-powers.hbs"}}
     </div>
   </section>
   

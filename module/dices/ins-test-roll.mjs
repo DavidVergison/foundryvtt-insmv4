@@ -9,7 +9,7 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
 
         this.renderData = this._prepareRenderData(roll, this.data);
         console.log("computed render data", {roll, data: this.data})
-        this.renderData.template = "systems/ins-mv/module/dices/templates/roll-result.hbs";
+        this.renderData.template = "systems/insmv/module/dices/templates/roll-result.hbs";
       }
       
 
@@ -32,15 +32,15 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
       }
       
       const specialResults = {
-        "111": "systems/ins-mv/static/assets/111.webp",
-        "666": "systems/ins-mv/static/assets/666.webp"
+        "111": "systems/insmv/static/assets/111.webp",
+        "666": "systems/insmv/static/assets/666.webp"
       };
 
       const spe = specialResults[this.renderData.rollResult]
       console.log("render spe", spe)
       if (spe) {
         this.renderData.picture = spe
-        this.renderData.template = "systems/ins-mv/module/dices/templates/roll-result-spe.hbs"
+        this.renderData.template = "systems/insmv/module/dices/templates/roll-result-spe.hbs"
       }
 
       const content = await renderTemplate(

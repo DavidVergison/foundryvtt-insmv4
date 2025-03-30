@@ -19,5 +19,5 @@ TODO :
 ~~cacher les competences vide des PNJs ?~~
 ~~correction bug jet de des NPC~~
 
-items simples (hors armure et armes)
+~~items simples (hors armure et armes)~~
 ~~bug trad / nom de l'acteur sur le lancé de dés~~
