@@ -1,11 +1,23 @@
 // Add custom fonts by visiting and search https://fonts.google.com
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-// Import utilities.
-@import 'utils/typography';
-@import 'utils/colors';
-@import 'utils/mixins';
-@import 'utils/variables';
+// Import des utilitaires
+@import "utils/variables";
+@import "utils/typography";
+@import "utils/mixins";
+@import "utils/colors";
+
+// Import des composants globaux
+@import "global/grid";
+@import "global/flex";
+@import "global/window";
+
+// Import des composants
+@import "components/items";
+@import "components/resource";
+@import "components/wounds";
+@import "components/forms";
+@import "components/insmv-sheet"; // Nouveau composant Ins/Mv
 
 /* Global styles */
 @import 'global/window';

@@ -41,6 +41,7 @@
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
       {{! As you add new fields, add them in here! }}
       <div class='resource'>
+        
         <label class='resource-label'>{{localize "INS_MV.PowerSheet.SpellLevel"}}</label>
         <input
           type='text'
@@ -48,6 +49,39 @@
           value='{{system.level}}'
           data-dtype='String'
         />
+
+        <label class='resource-label'>{{localize "INS_MV.PowerSheet.SpellType"}}</label>
+        <input
+          type='text'
+          name='system.type'
+          value='{{system.type}}'
+          data-dtype='String'
+        />
+
+        <label class='resource-label'>{{localize "INS_MV.PowerSheet.SpellActivation"}}</label>
+        <input
+          type='text'
+          name='system.activation'
+          value='{{system.activation}}'
+          data-dtype='String'
+        />
+
+        <label class='resource-label'>{{localize "INS_MV.PowerSheet.SpellCost"}}</label>
+        <input
+          type='text'
+          name='system.cost'
+          value='{{system.cost}}'
+          data-dtype='String'
+        />
+
+        <label class='resource-label'>{{localize "INS_MV.PowerSheet.SpellQuality"}}</label>
+        <input
+          type='text'
+          name='system.quality'
+          value='{{system.quality}}'
+          data-dtype='String'
+        />
+
       </div>
     </div>
   </section>
