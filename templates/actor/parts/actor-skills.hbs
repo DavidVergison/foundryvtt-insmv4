@@ -20,11 +20,13 @@
     <div class="grid-span-4 flex-group-left 
         {{#if (lookup @root.system.spe (concat key '_spe'))}}rollable{{/if}}" 
         data-roll="s:{{lookup @root.system.spe (concat key '_label_spe')}}">
+        {{#if (lookup @root.system.spe (concat key '_spe'))}}
         ({{editOrView 
             (lookup @root.options "edition") 
             (concat "system.spe." key "_label_spe") 
             (lookup @root.system.spe (concat key '_label_spe')) 
             class="x"}})
+        {{/if}}
     </div>
     
     {{editOrView 
@@ -34,11 +36,13 @@
         class="grid-span-1"}} 
 
     <div class="grid-span-2 flex-group-left">
+        {{#if (lookup @root.system.spe (concat key '_spe'))}}
         ({{editOrView 
             (lookup @root.options "edition") 
             (concat "system.spe." key '_spe') 
             (lookup @root.system.spe (concat key '_spe')) 
             class="x"}})
+        {{/if}}
     </div>
 
 {{else}}
