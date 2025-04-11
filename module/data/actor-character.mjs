@@ -31,9 +31,4 @@ export default class InsMvCharacter extends InsMvActorBase {
     return schema;
   }
 
-  prepareDerivedData() {
-
-  }
-
-
 }

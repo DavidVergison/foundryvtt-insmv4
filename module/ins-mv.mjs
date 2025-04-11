@@ -70,6 +70,7 @@ Hooks.once('init', function () {
     item: models.InsMvItem,
     weapon: models.InsMvWeapon,
     armor: models.InsMvArmor,
+    shield: models.InsMvShield,
     power: models.InsMvPower
   }
 

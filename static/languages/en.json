@@ -89,7 +89,8 @@
     },
     "Armor": {
       "Protection": "Protection",
-      "MinStrength": "Minimum Strength"
+      "MinStrength": "Minimum Strength",
+      "Shield": "Shield"
     },
     "GenericItem": {
       "Quantity": "Quantity",

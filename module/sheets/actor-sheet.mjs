@@ -21,7 +21,6 @@ export class InsMvActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    console.log("this.actor.type", this.actor.type)
     return `systems/insmv/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
 
@@ -38,7 +37,7 @@ export class InsMvActorSheet extends ActorSheet {
     // the context variable to see the structure, but some key properties for
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array.
-    const context = super.getData();
+    let context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
     const actorData = this.document.toPlainObject();
@@ -53,13 +52,13 @@ export class InsMvActorSheet extends ActorSheet {
 
     // Prepare character data and items.
     if (actorData.type == 'character') {
-      this._prepareItems(context);
-      this._prepareCharacterData(context);
+      context = this._prepareItems(context);
+      context = this._prepareCharacterData(context);
     }
 
     // Prepare NPC data and items.
     if (actorData.type == 'npc') {
-      this._prepareItems(context);
+      context = this._prepareItems(context);
     }
 
     // Enrich biography info for display
@@ -77,7 +76,6 @@ export class InsMvActorSheet extends ActorSheet {
         relativeTo: this.actor,
       }
     );
-
     return context;
   }
 
@@ -89,6 +87,7 @@ export class InsMvActorSheet extends ActorSheet {
   _prepareCharacterData(context) {
     // This is where you can enrich character-specific editor fields
     // or setup anything else that's specific to this type
+    return context
   }
 
   /**
@@ -101,14 +100,25 @@ export class InsMvActorSheet extends ActorSheet {
     const gear = [];
     const powers = [];
 
+    let armor = 0
+    let shield = 0
+
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || Item.DEFAULT_ICON;
       // Append to gear.
-      const validTypes = ['item', 'armor', 'weapon'];
+      const validTypes = ['item', 'armor', 'weapon', 'shield'];
       const validPowers = ['power'];
       if (validTypes.includes(i.type)) {
         gear.push(i);
+        if (i.system.equipped) {
+          if (i.type == "armor") {      
+            armor+=i.system.armor
+          }
+          if (i.type == "shield") {        
+            shield+=i.system.armor
+          }
+        }
       }
       // Append to powers.
       else if (validPowers.includes(i.type)) {
@@ -119,6 +129,9 @@ export class InsMvActorSheet extends ActorSheet {
     // Assign and return
     context.gear = gear;
     context.powers = powers;
+    context.armor = armor
+    context.shield = shield
+    return context
   }
 
   /* -------------------------------------------- */
@@ -133,11 +146,16 @@ export class InsMvActorSheet extends ActorSheet {
       const item = this.actor.items.get(li.data('itemId'));
       item.sheet.render(true);
     });
+    html.on('click', '.toggle-equipped', async (ev) => {
+      const li = $(ev.currentTarget).parents('.item');
+      const item = this.actor.items.get(li.data('itemId'));
+      await item.update({ "system.equipped": !item.system.equipped });
+      this.render(); // Rafraîchir la feuille
+    });
 
     html.on('click', '.wound', (ev) => {
       ev.preventDefault();
   
-      console.log("doc",this.document)
       const type = ev.currentTarget.dataset.type; 
       const key = ev.currentTarget.dataset.key; 
   
@@ -153,7 +171,6 @@ export class InsMvActorSheet extends ActorSheet {
   });
 
     html.find(".toggle-edit").click(ev => {
-      console.log("toggle", this.options.edition)
       this.options.edition = !this.options.edition;
       this.render(); // Rafraîchir la feuille
     });
@@ -221,7 +238,6 @@ export class InsMvActorSheet extends ActorSheet {
    * @private
    */
   async _onRoll(event) {
-    console.log("event", {event, o: this.object, t: this})
     event.preventDefault();
 
     const actorRollData = this.object.system.getRollData()
@@ -243,12 +259,12 @@ export class InsMvActorSheet extends ActorSheet {
         const item = this.actor.items.get(itemId);
         if(event.type == "contextmenu" && item.type != "power") { return }
 
-        console.log("item", item)
-        if (item.type == "weapon"){
+        const weaponType = ['weapon', 'shield'];
+        if (weaponType.includes(item.type)){
           const [skillName, speName] = att.split('/');
           score = actorRollData[skillName] || 0
           att = skillName
-          if(speName in actorRollData){
+          if(speName in actorRollData){            
             score = actorRollData[speName]
             att = speName
           }
@@ -267,8 +283,6 @@ export class InsMvActorSheet extends ActorSheet {
       } else {
         score = actorRollData[att] || 0
       }
-      console.log("att", att)
-      console.log("score", score)
 
       if(event.type == "contextmenu") {
         const relRoll = new game.insmv.RelativeTestRoll()

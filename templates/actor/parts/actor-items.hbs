@@ -16,8 +16,15 @@
   {{#each gear as |item id|}}
     <li class='item flexrow' data-item-id='{{item._id}}'>
       <div class='item-name'>
+      <a class="toggle-equipped" data-item-id="{{_id}}">
+        {{#if item.system.equipped}}
+          <i class="fas fa-check-square"></i>
+        {{else}}
+          <i class="far fa-square"></i>
+        {{/if}}
+      </a>
         <div class='item-image'>
-          <a class='rollable' data-roll-type='item' data-roll='i:{{item.system.skill}}/{{item.system.spe}}'>
+          <a class='rollable' data-roll-type='item' data-roll='i:{{item.system.skill}}/{{item.system.speciality}}'>
             <img
               src='{{item.img}}'
               title='{{item.name}}'
@@ -28,7 +35,7 @@
         </div>
         <h4>{{item.name}}</h4>
       </div>
-      <div class='item-formula item-prop'>{{item.system.skill}} / {{item.system.spe}}</div>
+      <div class='item-formula item-prop'>{{item.system.skill}} / {{item.system.speciality}}</div>
       <div class='item-controls'>
         <a
           class='item-control item-edit'

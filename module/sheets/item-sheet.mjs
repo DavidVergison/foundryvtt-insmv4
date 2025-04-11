@@ -6,7 +6,7 @@ export class InsMvItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ['ins-mv', 'sheet', 'item', 'armor', 'weapon'],
+      classes: ['ins-mv', 'sheet', 'item', 'armor', 'weapon', 'shield'],
       width: 520,
       height: 480,
       tabs: [

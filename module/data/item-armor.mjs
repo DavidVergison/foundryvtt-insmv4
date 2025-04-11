@@ -14,9 +14,6 @@ export default class InsMvArmor extends InsMvItem {
 
   
   prepareDerivedData() {
-    // Build the formula dynamically using string interpolation
-    const roll = this.roll;
 
-    this.formula = `${roll.diceNum}${roll.diceSize}${roll.diceBonus}`
   }
 }
