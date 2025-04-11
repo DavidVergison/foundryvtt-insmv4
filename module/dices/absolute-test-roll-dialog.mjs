@@ -46,7 +46,6 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
         }
       ],
       render: (event, dialog) => {
-        console.log("render", { event, dialog });
         const $dialog = $(dialog);
 
         // Bind change and input events to update values dynamically.
@@ -107,8 +106,6 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
    * Calculates the chance of success based on provided values.
    */
   static calculateChance({ modifier, score, actorRisk, difficulty }) {
-    console.log("InsMv4.calculateChance", { modifier, score, actorRisk, difficulty });
-
     // Convert the base score using the INS_MV_CONVERT helper.
     const baseScore = INS_MV_CONVERT.convertPlus(score);
 

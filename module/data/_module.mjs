@@ -9,3 +9,4 @@ export {default as InsMvArmor} from "./item-armor.mjs";
 export {default as InsMvItem} from "./item-item.mjs";
 export {default as InsMvPower} from "./item-power.mjs";
 export {default as InsMvWeapon} from "./item-weapon.mjs";
+export {default as InsMvShield} from "./item-shield.mjs";

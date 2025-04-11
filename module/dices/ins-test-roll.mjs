@@ -8,7 +8,6 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
         const roll = await this._rollDice(); // d666
 
         this.renderData = this._prepareRenderData(roll, this.data);
-        console.log("computed render data", {roll, data: this.data})
         this.renderData.template = "systems/insmv/module/dices/templates/roll-result.hbs";
       }
       
@@ -25,7 +24,6 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
     }
 
     async render(options = {}) {
-      console.log("render this.renderData", this.renderData)
 
       if (options.isPrivate){
         return ""
@@ -37,7 +35,6 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
       };
 
       const spe = specialResults[this.renderData.rollResult]
-      console.log("render spe", spe)
       if (spe) {
         this.renderData.picture = spe
         this.renderData.template = "systems/insmv/module/dices/templates/roll-result-spe.hbs"
@@ -59,7 +56,6 @@ export class AbstractInsTestRoll extends foundry.dice.Roll {
             });
             await d666Die.roll();
             let roll = d666Die.results.pop();
-            console.log("roll", roll);
         return roll
     }
 

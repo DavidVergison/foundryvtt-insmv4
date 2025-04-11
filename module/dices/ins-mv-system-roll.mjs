@@ -8,9 +8,7 @@ export class InsMvRoll extends foundry.dice.Roll {
    */
   static instantiateAST(ast) {
     return CONFIG.Dice.parser.flattenTree(ast).map((node) => {
-      console.log("CONFIG.Dice.parser.flattenTree(ast).map((node)", node)
       if (node.class === 'InsMvDiceTerm') {
-        console.log("OK !", node)
         const { formula } = node;
         const dD = InsMvDie.fromParseNode(node);
         dD.original = formula;

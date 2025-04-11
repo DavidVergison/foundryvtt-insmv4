@@ -18,7 +18,6 @@ export class InsMvDie extends foundry.dice.terms.Die {
      * @returns {Promise<DiceTermResult>}           The produced result
      */
     async roll({ minimize = false, maximize = false, ...options } = {}) {
-      console.log("roll")
       const roll = { 
         result: undefined, 
         active: true,
@@ -70,7 +69,6 @@ export class InsMvDie extends foundry.dice.terms.Die {
   
     /** @override */
     static fromParseNode(node) {
-      console.log("fromParseNode",node)
       let { number, faces } = node;
   
       if (!number) {

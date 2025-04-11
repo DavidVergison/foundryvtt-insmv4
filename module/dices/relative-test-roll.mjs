@@ -49,7 +49,6 @@ export class RelativeTestRoll extends AbstractInsTestRoll {
        * then prints the resulting roll outcome.
        */
     async prompt(rollConfig) {
-        console.log("prompt", rollConfig)
         const baseChance = RelativeTestRollDialog.calculateChance({
             modifier: 0,
             actorScore: INS_MV_CONVERT.convertPlus(rollConfig.score), 
@@ -57,7 +56,6 @@ export class RelativeTestRoll extends AbstractInsTestRoll {
             targetScore: 2,  
             targetRisk: 0
         })
-        console.log("prompt", {rollConfig, baseChance})
 
         // Define initial context data for the dialog.
         const dialogContext = {
@@ -72,7 +70,6 @@ export class RelativeTestRoll extends AbstractInsTestRoll {
 
         const data = await RelativeTestRollDialog.show(dialogContext)
 
-        console.log(data, rollConfig);
         if (data) {
             // Print the roll result as a chat message.
             await this._print(data, rollConfig);
@@ -83,7 +80,6 @@ export class RelativeTestRoll extends AbstractInsTestRoll {
      * Prints the roll result as a chat message.
      */
     async _print(data, rollConfig) {
-        console.log("_print", { data, rollConfig })
         // Destructure data.
         const {actorScore, modifier, actorRisk, targetScore, targetRisk, computedScore, chance } = data;
         const { faith, name, testedAttribute } = rollConfig;

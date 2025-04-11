@@ -72,7 +72,6 @@ export default class InsMvActorBase extends InsMvDataModel {
   }
 
   getRollData() {
-    console.log("getRollData", this)
     const data = {};
     for (const carac in INS_MV.sheetDictionary.Caracteristiques) {
       data[carac] = INS_MV_CONVERT.convertPlus(this.caracteristics[carac])
@@ -101,7 +100,6 @@ export default class InsMvActorBase extends InsMvDataModel {
         data[this.spe[talent + '_label_spe']] = INS_MV_CONVERT.convertPlus(this.spe[talent + '_spe'])
       }
     }
-    console.log("getRollData", data)
 
     return data
   }

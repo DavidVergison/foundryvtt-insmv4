@@ -12,7 +12,6 @@ export class InsMvRollParser extends foundry.dice.RollParser {
      * @protected
      */
     _onDiceTerm(number, faces, modifiers, flavor, formula) {
-      console.log("_onDiceTerm", {number, faces, modifiers, flavor, formula} )
       if (CONFIG.debug.rollParsing) {
         // eslint-disable-next-line no-console
         console.debug(
@@ -31,7 +30,6 @@ export class InsMvRollParser extends foundry.dice.RollParser {
       const useNewDieType = loc !== -1;
   
       if (useNewDieType) {
-        console.log("useNewDieType")
         return {
           class: 'InsMvDiceTerm',
           formula: '',

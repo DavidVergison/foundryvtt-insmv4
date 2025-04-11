@@ -9,7 +9,6 @@ export class RelativeTestRollDialog extends foundry.applications.api.DialogV2 {
    * Show dialog and wait for roll
    */
   static async show(dialogContext) {
-    console.log("RelativeTestRollDialog.show",dialogContext)
     // Render the dialog template with the context.
     const content = await renderTemplate("systems/insmv/module/dices/templates/relative.html", dialogContext);
 
@@ -48,7 +47,6 @@ export class RelativeTestRollDialog extends foundry.applications.api.DialogV2 {
         }
       ],
       render: (event, dialog) => {
-        console.log("render", { event, dialog });
         const $dialog = $(dialog);
 
         // Bind change and input events to update values dynamically.
@@ -70,7 +68,6 @@ export class RelativeTestRollDialog extends foundry.applications.api.DialogV2 {
    * Extracts values from the dialog's HTML.
    */
   static getValuesFromDialog(html) {
-    console.log("RelativeTestRollDialog.getValuesFromDialog",html)
     const $modifier = html.find("#modifier");
     const $actorScore = html.find("#actorScore");
     const $actorRisk = html.find("#actorRisk");
@@ -95,7 +92,6 @@ export class RelativeTestRollDialog extends foundry.applications.api.DialogV2 {
    * Updates the chance display in the dialog based on input values.
    */
   static updateValues(html) {
-    console.log("RelativeTestRollDialog.updateValues",html)
     const { computedScore, bonusScore, chance } = RelativeTestRollDialog.calculateChance(
       RelativeTestRollDialog.getValuesFromDialog(html)
     );
@@ -109,17 +105,9 @@ export class RelativeTestRollDialog extends foundry.applications.api.DialogV2 {
    * Calculates the chance of success based on provided values.
    */
   static calculateChance({ modifier, actorScore, actorRisk, targetScore,  targetRisk }) {
-    console.log("RelativeTestRollDialog.calculateChance", { 
-      modifier, 
-      actorScore, 
-      actorRisk, 
-      targetScore,  
-      targetRisk });
 
     const actorComputedScore = actorScore + ((modifier - actorRisk) / 2);
     const targetComputedScore = targetScore - (targetRisk / 2);
-
-    console.log("",{actorComputedScore, targetComputedScore})
 
     const computedScore = Math.max(-4.5, Math.min(actorComputedScore - targetComputedScore, 4.5));
   

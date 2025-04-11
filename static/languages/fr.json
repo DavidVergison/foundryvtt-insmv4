@@ -89,7 +89,8 @@
     },
     "Armor": {
       "Protection": "Protection",
-      "MinStrength": "Force minimale"
+      "MinStrength": "Force minimale",
+      "Shield": "Bouclier"
     },
     "GenericItem": {
       "Quantity": "Quantité",

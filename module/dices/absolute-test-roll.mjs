@@ -8,7 +8,6 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
    * Prepares the data needed to render the roll result.
    */
   _prepareRenderData(roll, data) {
-    console.log("_prepareRenderData", { roll, data })
     // Destructure properties from the provided data.
     const {
       computedScore,
@@ -33,16 +32,6 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
       INS_MV_CONVERT.convertPlus(faith) * (roll.maxRepeats - 1) +
       (marginBonus || 0)
     )
-
-    console.log({
-      m: roll.margin,
-      bonusScore,
-      actorRisk,
-      faith,
-      r: roll.maxRepeats,
-      marginBonus,
-      successMargin
-    })
 
     // Build an array detailing the components contributing to the success margin.
     const successMarginParts = [
@@ -74,7 +63,7 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
         { name: "unité", value: roll.margin }
       ]
     };
-    console.log("tplData", tplData)
+
     return tplData
   }
 
@@ -83,7 +72,6 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
    * then prints the resulting roll outcome.
    */
   async prompt(rollConfig) {
-    console.log("prompt", rollConfig)
     const baseChance = AbsoluteTestRollDialog.calculateChance({
       modifier: rollConfig.modifier,
       score: rollConfig.score,
@@ -104,7 +92,6 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
 
     const data = await AbsoluteTestRollDialog.show(dialogContext)
 
-    console.log(data, rollConfig);
     if (data) {
       // Print the roll result as a chat message.
       await this._print(data, rollConfig);
@@ -115,7 +102,6 @@ export class AbsoluteTestRoll extends AbstractInsTestRoll {
    * Prints the roll result as a chat message.
    */
   async _print(data, rollConfig) {
-    console.log("_print", { data, rollConfig })
     // Destructure data.
     const { actorRisk, computedScore, bonusScore } = data;
     const { faith, name, testedAttribute, marginBonus, marginBonusName } = rollConfig;

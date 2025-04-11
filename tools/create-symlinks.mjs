@@ -3,8 +3,6 @@ import * as fs from "fs";
 import yaml from "js-yaml";
 import path from "path";
 
-console.log("Reforging Symlinks");
-
 if (fs.existsSync("foundry-config.yaml")) {
   let fileRoot = "";
   try {
