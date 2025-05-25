@@ -1,0 +1,27 @@
+<p class="unfold">
+  <strong>{{name}} fait un test de {{attribute}}</strong>
+  <br/>
+  <span>Avec un score de {{actorComputedScore}} vs {{targetComputedScore}}</span>
+</p>
+<div class="detail">
+  {{name}} : {{effectiveActorScoreDetail}}<br/>
+  Adversaire : {{effectiveTargetScoreDetail}}
+</div>
+
+<hr/>
+<p title="seuil: {{threshold}}">
+  <strong>Résultat :</strong> {{result}}
+  {{#if success}}
+  <span style="color: green;"> C'est un Succès !</span>
+  {{else}}
+  <span style="color: red;"> C'est un Echec !</span>
+  {{/if}}
+</p>
+
+<p>
+  <span>Marge de réussite {{winnerMargin}}</span>
+</p>
+
+<p>
+  <span>Marge d'échec {{looserMargin}}</span>
+</p>

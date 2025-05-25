@@ -1,0 +1,38 @@
+<p class="unfold">
+  <strong>{{name}} fait un test de {{attribute}}</strong>
+  <br/>
+  <span>Avec un score de {{effectiveScore}}</span>
+</p>
+<div class="detail">
+  {{showArray effectiveScoreDetail}}
+</div>
+
+<p title="seuil: {{threshold}}">
+  <strong>Résultat :</strong> {{result}}
+  {{#if success}}
+  <span style="color: green;"> C'est un Succès !</span>
+  {{else}}
+  <span style="color: red;"> C'est un Echec !</span>
+  {{/if}}
+</p>
+<hr/>
+{{#if success}}
+<p class="unfold">{{actionName}} : {{action}}</p>
+<div class="detail">
+  {{showArray actionScoreDetails}}
+</div>
+
+{{#ifNotEquals effectName ""}}
+<p class="unfold">{{effectName}} : {{effect}}</p>
+<div class="detail">
+  {{showArray effectScoreDetails}}
+</div>
+{{/ifNotEquals}}
+
+
+{{else}}
+<span style="color: red;" title="résultat des unités : {{failMargin}}">
+  Avec une marge de {{failMargin}}
+</span>
+{{/if}}
+

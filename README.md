@@ -21,3 +21,12 @@ TODO :
 
 ~~items simples (hors armure et armes)~~
 ~~bug trad / nom de l'acteur sur le lancé de dés~~
+
+
+~~modifier ecran absolu pour tenir compte de la précision~~
+~~gestion des armes et armures (bonus aux RU / dégâts)~~
+~~supprimer les langues~~
+reparer les blessures
+mettre en place une factory
+moins de strings dans le templating
+details des resultats relatifs

@@ -1,30 +1,30 @@
-<form>
+<form class="ins-form">
 
   <div class="form-group">
-    <label>{{localize "INS_MV.Dice.PlayerScore"}} :</label>
+    <label>Score du joueur :</label>
     <span id="actorScore">{{#formatScore actorScore}}{{/formatScore}}</span>
   </div>
   <div class="form-group">
-    <label for="modifier">{{localize "INS_MV.Dice.Modifier"}} :</label>
-    <input type="number" id="modifier" name="modifier" value="{{modifier}}" min="0" />
-  </div>
-  <div class="form-group">
-    <label for="actorRisk">{{localize "INS_MV.Dice.PlayerRisk"}}:</label>
+    <label for="actorRisk">Prise de risque du joueur :</label>
     <input type="number" id="actorRisk" name="actorRisk" value="{{actorRisk}}" min="0" max="{{score}}" />
   </div>
 
-    <div class="form-group">
-      <label for="targetScore">{{localize "INS_MV.Dice.TargetScore"}} :</label>
-      <input type="number" id="targetScore" name="targetScore" value="{{targetScore}}" min="0" />
-    </div>
-    <div class="form-group">
-      <label for="targetRisk">{{localize "INS_MV.Dice.TargetRisk"}}:</label>
-      <input type="number" id="targetRisk" name="targetRisk" value="{{targetRisk}}" min="0" />
-    </div>
-    
-    <div class="form-group">
-      <p id="chance">{{localize "INS_MV.Dice.SuccessChance"}} : {{chance}}% ({{#formatScore computedScore}}{{/formatScore}})</p>
-    </div>
+  <div class="form-group">
+    <label for="targetScore">Score Adverse :</label>
+    <input type="number" id="targetScore" name="targetScore" value="{{targetScore}}" min="0" />
+  </div>
+  <div class="form-group">
+    <label for="targetRisk">Prise de risque de l'adversaire :</label>
+    <input type="number" id="targetRisk" name="targetRisk" value="{{targetRisk}}" min="0" />
+  </div>
+  <div class="form-group">
+    <label for="targetFaith">Foi de l'adversaire :</label>
+    <input type="number" id="targetFaith" name="targetFaith" value="{{targetFaith}}" min="0" />
+  </div>
+  
+  <div class="form-group">
+    <p id="chance"Chance de réussite : {{chance}}% ({{#formatScore computedScore}}{{/formatScore}})</p>
+  </div>
 
 </form>
   

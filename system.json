@@ -20,7 +20,7 @@
       "thumbnail": "systems/insmv/static/assets/anvil-impact.png"
     }
   ],
-  "version": "1.0.2",
+  "version": "1.1.0",
   "compatibility": {
       "minimum": 12,
       "verified": "12"
@@ -42,11 +42,6 @@
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
   "languages": [
-      {
-          "lang": "en",
-          "name": "English",
-          "path": "static/languages/en.json"
-      },
       {
           "lang": "fr",
           "name": "French",

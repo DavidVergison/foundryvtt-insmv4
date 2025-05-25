@@ -9,10 +9,10 @@
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="mainTabs">
-      <a class="item active" data-tab="skills">{{localize "INS_MV.Tabs.Skills"}}</a>
-      <a class="item" data-tab="wounds">{{localize "INS_MV.Tabs.Wounds"}}</a>
-      <a class="item" data-tab="items">{{localize "INS_MV.Tabs.Items"}}</a>
-      <a class="item" data-tab="powers">{{localize "INS_MV.Tabs.Powers"}}</a>
+      <a class="item active" data-tab="skills">Talents</a>
+      <a class="item" data-tab="wounds">Blessures</a>
+      <a class="item" data-tab="items">Objets</a>
+      <a class="item" data-tab="powers">Pouvoirs</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -20,7 +20,7 @@
       {{!-- Skills Tab --}}
       <div class="tab" data-tab="skills" data-group="mainTabs">
         <section class="grid grid-12col">
-          <div class="items-header grid-span-12"><p>{{localize "INS_MV.Tabs.Skills"}}</p></div>
+          <div class="items-header grid-span-12"><p>Talents</p></div>
           {{#each this.config.talents.npc as |attributes key|}}
             {{#if (or (lookup @root.options "edition") (lookup @root.system.exotic (concat key '_label')))}}
               {{> "systems/insmv/templates/actor/parts/actor-skills.hbs" attributes=attributes  key=key }}
