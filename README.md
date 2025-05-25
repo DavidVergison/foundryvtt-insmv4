@@ -26,7 +26,8 @@ TODO :
 ~~modifier ecran absolu pour tenir compte de la précision~~
 ~~gestion des armes et armures (bonus aux RU / dégâts)~~
 ~~supprimer les langues~~
-reparer les blessures
+~~reparer les blessures~~
+corriger les .5 en + a l'affichage
 mettre en place une factory
 moins de strings dans le templating
 details des resultats relatifs
