@@ -8,13 +8,24 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
   /**
    * Show dialog and wait for roll
    */
-  static async show(dialogContext) {
+  static async show(contextValues) {
+
+    let defaultValues = {
+      modifier: 0,
+      actorRisk: 0,
+      bonus: 0,
+      difficulties: INS_MV.DIFFICULTIES,
+    }
+
+    let dialogContext = Object.assign({}, contextValues, defaultValues);
+
     // Render the dialog template with the context.
     const content = await renderTemplate("systems/insmv/module/dices/templates/absolute.html", dialogContext);
 
     // Open the dialog and wait for user input.
     const data = await AbsoluteTestRollDialog.wait({
-      window: { title: "My Dialog" },
+      window: { title: "Test Absolu" },
+      classes: ["ins-form"],
       position: { width: "auto" },
       content: content,
       rejectClose: false,
@@ -33,13 +44,14 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
           callback: (event, button, dialog) => {
             const $dialog = $(dialog);
             // Extract values from the dialog inputs.
-            const { modifier, score, actorRisk, difficulty } = AbsoluteTestRollDialog.getValuesFromDialog($dialog);
+            const { modifier, score, actorRisk, difficulty, precision } = AbsoluteTestRollDialog.getValuesFromDialog($dialog);
             // Calculate chance and related scores based on the extracted values.
             const { computedScore, bonusScore, chance } = AbsoluteTestRollDialog.calculateChance({
               modifier,
               score,
               actorRisk,
               difficulty,
+              precision,
             });
             return { modifier, score, actorRisk, difficulty, computedScore, bonusScore, chance };
           }
@@ -59,6 +71,8 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
         $actorRisk.on("change input", () => AbsoluteTestRollDialog.updateValues($dialog));
       }
     });
+    console.log("DATA")
+    console.log(data)
     return data
   }
 
@@ -70,6 +84,7 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
     const $difficulty = html.find("#difficulty");
     const $modifier = html.find("#modifier");
     const $actorRisk = html.find("#actorRisk");
+    const $precision = html.find("#precision");
 
     // Parse the modifier value; default to 0 if not a number
     const modifier = parseInt($modifier.val(), 10) || 0;
@@ -83,10 +98,11 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
     actorRisk = Math.max(0, Math.min(actorRisk, score));
     $actorRisk.val(actorRisk);
 
+    const precision = parseInt($precision.val(), 10) || 0;
     // Retrieve the difficulty bonus from the selected option in the dropdown.
     const difficulty = parseInt($difficulty.find("option:selected").data("bonus"), 10) || 0;
 
-    return { modifier, score, actorRisk, difficulty };
+    return { modifier, score, actorRisk, difficulty, precision};
   }
 
   /**
@@ -105,12 +121,14 @@ export class AbsoluteTestRollDialog extends foundry.applications.api.DialogV2 {
   /**
    * Calculates the chance of success based on provided values.
    */
-  static calculateChance({ modifier, score, actorRisk, difficulty }) {
+  static calculateChance({ modifier, score, actorRisk, difficulty, precision}) {
     // Convert the base score using the INS_MV_CONVERT helper.
     const baseScore = INS_MV_CONVERT.convertPlus(score);
 
     // Compute the score based on difficulty, modifier, and actor risk.
-    let computedScore = baseScore + ((difficulty + modifier - actorRisk) / 2);
+    let computedScore = baseScore + 
+      ((difficulty + modifier - actorRisk) / 2) +
+      (precision / 2);
     // Clamp computedScore between -2.5 and 6.5.
     computedScore = Math.max(-2.5, Math.min(computedScore, 6.5));
 

@@ -4,11 +4,13 @@
             class="resource-label rollable flexlarge align-right" 
             title="xx"
             data-roll="c:{{key}}" 
-            data-label="{{localize (concat "INS_MV.Ability." key ".long")}}">
-            {{localize (concat "INS_MV.Ability." key ".long")}}
+            data-label="{{key}}">
+            {{key}}
         </label>
         <div class=" flex-group-left">
-            <i class="fas fa-dice-d20" data-roll="c:{{key}}" data-label="{{localize (concat "INS_MV.Ability." key ".long")}}"></i>
+            <i class="fas fa-dice-d20" 
+            data-roll="c:{{key}}" 
+            data-label="key}}"></i>
 
             {{editOrView 
                 (lookup @root.options "edition") 

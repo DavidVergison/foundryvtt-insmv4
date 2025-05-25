@@ -791,6 +791,14 @@
   text-align: center;
 }
 
+.detail {
+  display: none;
+}
+
+.ins-form .form-group label {
+  flex-grow: 4;
+}
+
 /* Styles limited to ins-mv sheets */
 .ins-mv .item-form {
   font-family: "Roboto", sans-serif;

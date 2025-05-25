@@ -30,7 +30,7 @@ Hooks.once('init', function () {
     InsMvItem,
     rollItemMacro, 
     AbsoluteTestRoll,
-    RelativeTestRoll,
+    RelativeTestRoll
   };
 
   // Add custom constants for configuration.
@@ -78,12 +78,12 @@ Hooks.once('init', function () {
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('ins-mv', InsMvActorSheet, {
     makeDefault: true,
-    label: 'INS_MV.SheetLabels.Actor',
+    label: 'Fiche de Personnage',
   });
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('ins-mv', InsMvItemSheet, {
     makeDefault: true,
-    label: 'INS_MV.SheetLabels.Item',
+    label: 'Fiche d\'Objet',
   });
 
   // Preload Handlebars templates.
@@ -95,6 +95,12 @@ Hooks.once('init', function () {
 /* -------------------------------------------- */
 
 // If you need to add Handlebars helpers, here is a useful example:
+Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+Handlebars.registerHelper('ifNotEquals', function(arg1, arg2, options) {
+  return (arg1 != arg2) ? options.fn(this) : options.inverse(this);
+});
 Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
 });
@@ -143,6 +149,15 @@ Handlebars.registerHelper("concatTitle", function(array) {
       .map(item => `${item.value} (${item.name})`) // Formate chaque élément
       .join(" + "); // Assemble les éléments avec " + "
 });
+
+Handlebars.registerHelper("showArray", function(array) {
+  if (!Array.isArray(array) || array.length === 0) {
+      return "";
+  }
+  let res = array.join("<br/>")
+  return new Handlebars.SafeString(res);
+});
+
 Handlebars.registerHelper("editOrView", function(editable, name, value, options) {
   const attrs = Object.keys(options.hash)
       .map(key => `${key}="${options.hash[key]}"`)
@@ -248,3 +263,10 @@ function rollItemMacro(itemUuid) {
     item.roll();
   });
 }
+
+Hooks.on("renderChatMessage", (chatMessage, html, data) => {
+  // Applique le comportement uniquement aux messages contenant le bouton .unfold
+  html.find(".unfold").on("click", function () {
+    $(this).next(".detail").slideToggle(300);
+  });
+});

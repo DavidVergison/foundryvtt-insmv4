@@ -10,7 +10,7 @@ export default class InsMvShield extends InsMvItem {
     schema.power = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1});
     schema.precision = new fields.NumberField({ required: true, nullable: false, integer: true, initial: -1});
     schema.skill = new fields.StringField({ blank: true });
-    schema.spe = new fields.StringField({ blank: true });
+    schema.speciality = new fields.StringField({ blank: true });
 
     return schema;
   }

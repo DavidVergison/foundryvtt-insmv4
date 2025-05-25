@@ -9,7 +9,7 @@
 {{else}}
 <div class="grid-span-4 flex-group-left {{#if (or (includes attributes "innée") (lookup @root.system.skills key))}}rollable{{/if}}" data-roll="t:{{key}}">
     <label for="system.skills.{{key}}" title="{{lookup @root.desc.Skills key}}">
-        {{localize (concat "INS_MV.Talents." key)}}
+        {{key}}
         {{#if (includes attributes "innée")}}*{{/if}}
     </label>
 </div>
@@ -35,7 +35,7 @@
         class="grid-span-1"}} 
 
     <div class="grid-span-2 flex-group-left">
-        {{#if (or (lookup @root.system.spe (concat key '_spe')) (lookup @root.options "edition"))}}
+        {{#if (or (lookup @root.system.spe (concat key '_spe')) (lookup @root.options "edition"))}} 
         ({{editOrView 
             (lookup @root.options "edition") 
             (concat "system.spe." key '_spe') 

@@ -250,6 +250,62 @@ export class InsMvActorSheet extends ActorSheet {
     let modifier = 0
 
     if (roll) {
+
+      console.log("*****************")
+      let r = {}
+      if(event.type == "contextmenu" && roll.charAt(0) != "i") {
+        r = new game.insmv.RelativeTestRoll()
+      } else {
+        r = new game.insmv.AbsoluteTestRoll()
+      }
+      console.log(roll)
+      console.log(actorRollData)
+      switch (roll.charAt(0)) {
+        case "s":
+        case "t":
+          r.createFromActorSkill(
+            this.actor, actorRollData, roll.substring(2)
+          )
+          r.prompt()
+          break
+        case "c":
+          r.createFromActorCarac(
+            this.actor, actorRollData, roll.substring(2)
+          )
+          r.prompt()
+          break
+        case "i":        
+          const itemId = element.closest('.item').dataset.itemId;
+          const item = this.actor.items.get(itemId);
+          const [skill, spe] = roll.substring(2).split("/")
+          const skillScore = actorRollData[skill] || 0
+          const speScore = actorRollData[spe] || 0
+          const  talent = speScore > skillScore ? spe : skill
+          console.log({
+            skill, spe, talent
+          })
+          r.createFromActorItem(
+            this.actor, actorRollData, talent, item
+          )
+          r.prompt()
+          break
+        case "p":
+          const powerId = element.closest('.item').dataset.itemId;
+          const power = this.actor.items.get(powerId) || 0;
+          console.log(power)
+          r.createFromActorPower(
+            this.actor, actorRollData, power
+          )
+          r.prompt()
+          break
+
+      }
+      console.log("*****************")
+
+/*
+
+
+
       // jet de caracteristique
       let score = 0
       let att = roll.substring(2)
@@ -271,17 +327,17 @@ export class InsMvActorSheet extends ActorSheet {
           modifier = item.system.precision
           marginBonus = item.system.power
           marginBonusName = "puissance"
+
         } else if (item.type == "armor"){
           score = actorRollData["Défense"] || 0
           att = "Défense"
           marginBonus = item.system.armor
           marginBonusName = "protection"
-        } else if (item.type == "power"){
-          score = item.system.level || 0
-          att = item.name
+          console.log("ici")
         } 
       } else {
         score = actorRollData[att] || 0
+        console.log("la")
       }
 
       if(event.type == "contextmenu") {
@@ -305,7 +361,7 @@ export class InsMvActorSheet extends ActorSheet {
           modifier //ex : weapon precision
         })
       }
-
+*/
     }
   }
 }

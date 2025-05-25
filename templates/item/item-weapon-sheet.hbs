@@ -11,15 +11,15 @@
           name='name'
           type='text'
           value='{{item.name}}'
-          placeholder='Name'
+          placeholder='Nom'
         /></h1>
     </div>
   </header>
 
   {{! Sheet Tab Navigation }}
   <nav class='sheet-tabs tabs' data-group='primary'>
-    <a class='item' data-tab='description'>{{localize "INS_MV.ItemSheet.Description"}}</a>
-    <a class='item' data-tab='attributes'>{{localize "INS_MV.ItemSheet.Attributes"}}</a>
+    <a class='item' data-tab='description'>Description</a>
+    <a class='item' data-tab='attributes'>Attributs</a>
   </nav>
 
   {{! Sheet Body }}
@@ -41,7 +41,7 @@
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
       {{! As you add new fields, add them in here! }}
       <div class='form-group'>
-        <label>{{localize "INS_MV.Weapon.Power"}}</label>
+        <label>Puissance</label>
         <input
           type='number'
           name='system.power'
@@ -50,7 +50,7 @@
         />
       </div>
       <div class='form-group'>
-        <label>{{localize "INS_MV.Weapon.Precision"}}</label>
+        <label>Précision</label>
         <input
           type='number'
           name='system.precision'
@@ -59,7 +59,7 @@
         />
       </div>
       <div class='form-group'>
-        <label>{{localize "INS_MV.Weapon.Skill"}}</label>
+        <label>Talent</label>
         <input
           type='text'
           name='system.skill'
@@ -67,7 +67,7 @@
         />
       </div>
       <div class='form-group'>
-        <label>{{localize "INS_MV.Weapon.Speciality"}}</label>
+        <label>Spécialité</label>
         <input
           type='text'
           name='system.speciality'
