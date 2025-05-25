@@ -174,7 +174,7 @@ Handlebars.registerHelper("editOrView", function(editable, name, value, options)
   }
 });
 Handlebars.registerHelper("woundSymbol", function(value) {
-  const symbols = ["🔘", "⊘", "⊗"];
+  const symbols = [" ", "/", "X"];
   return new Handlebars.SafeString(symbols[value] || "?");
 });
 

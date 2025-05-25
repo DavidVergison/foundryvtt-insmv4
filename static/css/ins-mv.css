@@ -366,6 +366,10 @@
   margin: 0px 0;
 }
 
+.wound {
+  color: black;
+}
+
 .item-form {
   font-family: "Roboto", sans-serif;
 }
@@ -988,4 +992,7 @@
 }
 .ins-mv .grid {
   margin: 0px 0;
+}
+.ins-mv .wound {
+  color: black;
 }
